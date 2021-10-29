@@ -9,3 +9,5 @@ import Foundation
 
 print("Hello, World!")
 
+print(Body.cabriolet)
+print(Body.cabriolet.rawValue)
