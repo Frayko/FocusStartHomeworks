@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct Car {
+struct Car: CustomStringConvertible {
 	let manufacturer: String
 	let model: String
 	let body: Body
 	let yearOfIssue: Int?
 	let carNumber: String?
 	
-	var fullDescription: String {
+	var description: String {
 		var str = "Производитель: \(self.manufacturer), модель: \(self.model), кузов: \(self.body)"
 		
 		if let year = yearOfIssue {

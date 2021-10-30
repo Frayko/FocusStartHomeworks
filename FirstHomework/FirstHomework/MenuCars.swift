@@ -24,18 +24,7 @@ class MenuCars {
 				case 2:
 					self.printAllCars()
 				case 3:
-					print("\(Body.getAllCases)\nВведите тип кузова по номеру в списке:")
-					let body = readStrongLine()
-					
-					guard let bodyNumber = Body(rawValue: Int(body) ?? -1) else {
-						print("Ошибка при выборе кузова")
-						break
-					}
-					
-					print()
-					print("Результат")
-					
-					printFiltredCars(body: bodyNumber)
+					printFiltredCars(body: readBody())
 				case 0:
 					return
 				default:
@@ -63,8 +52,7 @@ class MenuCars {
 		let manufacturer = readStrongLine()
 		print("Введите модель")
 		let model = readStrongLine()
-		print("\(Body.getAllCases)\nВведите тип кузова по номеру в списке")
-		let body = readStrongLine()
+		let body = readBody()
 		print("Введите год производства (можно пропустить, нажав Enter)")
 		let yearOfIssue = Int(readLine() ?? "")
 		print("Введите гос. номер (можно пропустить, нажав Enter)")
@@ -74,32 +62,36 @@ class MenuCars {
 			carNumber = nil
 		}
 
-		guard let bodyNumber = Body(rawValue: Int(body) ?? -1) else {
-			print("Ошибка при выборе кузова")
-			return
-		}
-
-		self.cars.append(Car(manufacturer: manufacturer, model: model, body: bodyNumber, yearOfIssue: yearOfIssue, carNumber: carNumber))
+		self.cars.append(Car(manufacturer: manufacturer, model: model, body: body, yearOfIssue: yearOfIssue, carNumber: carNumber))
 	}
 	
 	private func readStrongLine() -> String {
 		guard let input = readLine() else {
-			print("Ошибка при вводе данных")
-			return ""
+			print("Ошибка при вводе данных, попробуйте снова")
+			return readStrongLine()
 		}
 		
 		return input
 	}
 	
 	private func printAllCars() {
-		self.cars.forEach { print($0.fullDescription) }
+		self.cars.forEach { print($0) }
+	}
+	
+	private func readBody() -> Body {
+		print(Body.allCases.map{ "\($0.rawValue) - \($0)" }.joined(separator: ", "))
+		print("Введите тип кузова по номеру в списке:")
+		let bodyString = readStrongLine()
+		
+		guard let body = Body(rawValue: Int(bodyString) ?? -1) else {
+			print("Ошибка при выборе кузова, попробуйте снова")
+			return readBody()
+		}
+		
+		return body
 	}
 	
 	private func printFiltredCars(body: Body) {
-		self.cars.forEach { car in
-			if car.body == body {
-				print(car.fullDescription)
-			}
-		}
+		self.cars.filter { car in car.body == body }.forEach { print($0) }
 	}
 }
