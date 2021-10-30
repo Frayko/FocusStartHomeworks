@@ -13,4 +13,5 @@
 <img width="532" alt="image" src="https://user-images.githubusercontent.com/57676076/139516829-8da75667-449f-4921-9f41-cd29bb0bd3eb.png">
 
 Выбирая 3 пункт, нас попросят выбрать тип кузова, по которому будет производится поиск, выбираем 1 в списке седан и получаем следующий результат
+
 <img width="534" alt="image" src="https://user-images.githubusercontent.com/57676076/139516872-0383bd95-2000-4b9b-af0f-ed886a649fc1.png">
