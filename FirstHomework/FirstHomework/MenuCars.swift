@@ -66,12 +66,13 @@ class MenuCars {
 	}
 	
 	private func readStrongLine() -> String {
-		guard let input = readLine() else {
-			print("Ошибка при вводе данных, попробуйте снова")
-			return readStrongLine()
+		while true {
+			if let input = readLine() {
+				return input
+			} else {
+				print("Ошибка ввода, попробуйте ещё раз!")
+			}
 		}
-		
-		return input
 	}
 	
 	private func printAllCars() {
@@ -81,14 +82,15 @@ class MenuCars {
 	private func readBody() -> Body {
 		print(Body.allCases.map{ "\($0.rawValue) - \($0)" }.joined(separator: ", "))
 		print("Введите тип кузова по номеру в списке:")
-		let bodyString = readStrongLine()
-		
-		guard let body = Body(rawValue: Int(bodyString) ?? -1) else {
-			print("Ошибка при выборе кузова, попробуйте снова")
-			return readBody()
+
+		while true {
+			let bodyString = readStrongLine()
+			if let body = Body(rawValue: Int(bodyString) ?? -1) {
+				return body
+			} else {
+				print("Ошибка при выборе кузова, попробуйте ещё раз!")
+			}
 		}
-		
-		return body
 	}
 	
 	private func printFiltredCars(body: Body) {
