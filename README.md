@@ -9,12 +9,12 @@
 
 Выбирая 1 пункт, нам предложит ввести некоторые данные, где последние два можно не вводить и просто нажать Enter
 
-<img width="535" alt="image" src="https://user-images.githubusercontent.com/57676076/139516680-face04a0-e0aa-4673-977f-277c5a4e95e2.png">
+<img width="534" alt="image" src="https://user-images.githubusercontent.com/57676076/139521352-d9a5b1d2-a994-44a6-b1a4-7e35aed88acb.png">
 
 Изначально в класс меню по умолчанию добавлены 3 машины, поэтому вызвав 2 пункт меню у нас выведется список из 4 машин
 
-<img width="532" alt="image" src="https://user-images.githubusercontent.com/57676076/139516829-8da75667-449f-4921-9f41-cd29bb0bd3eb.png">
+<img width="531" alt="image" src="https://user-images.githubusercontent.com/57676076/139521379-ee41a9b4-072e-47ad-82e4-40cad4f58dec.png">
 
 Выбирая 3 пункт, нас попросят выбрать тип кузова, по которому будет производится поиск, выбираем 1 в списке седан и получаем следующий результат
 
-<img width="534" alt="image" src="https://user-images.githubusercontent.com/57676076/139516872-0383bd95-2000-4b9b-af0f-ed886a649fc1.png">
+<img width="533" alt="image" src="https://user-images.githubusercontent.com/57676076/139521385-a8fa15fb-d93f-487e-873e-ed7a92dab273.png">
