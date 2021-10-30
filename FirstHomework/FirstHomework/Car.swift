@@ -22,7 +22,7 @@ struct Car {
 		} else {
 			str += ", год выпуска: -"
 		}
-		
+
 		if let number = carNumber {
 			str += ", гос. номер: \(number)"
 		}
