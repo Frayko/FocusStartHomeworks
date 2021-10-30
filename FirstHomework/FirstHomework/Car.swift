@@ -15,7 +15,9 @@ struct Car: CustomStringConvertible {
 	let carNumber: String?
 	
 	var description: String {
-		var str = "Производитель: \(self.manufacturer), модель: \(self.model), кузов: \(self.body)"
+		var str = "Производитель: \(self.manufacturer), "
+				+ "модель: \(self.model), "
+				+ "кузов: \(self.body)"
 		
 		if let year = yearOfIssue {
 			str += ", год выпуска: \(year)"

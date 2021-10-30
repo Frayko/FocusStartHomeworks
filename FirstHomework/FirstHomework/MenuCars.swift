@@ -24,7 +24,7 @@ class MenuCars {
 				case 2:
 					self.printAllCars()
 				case 3:
-					printFiltredCars(body: readBody())
+					printFiltredCars()
 				case 0:
 					return
 				default:
@@ -62,7 +62,10 @@ class MenuCars {
 			carNumber = nil
 		}
 
-		self.cars.append(Car(manufacturer: manufacturer, model: model, body: body, yearOfIssue: yearOfIssue, carNumber: carNumber))
+		self.cars.append(Car(manufacturer: manufacturer,
+							 model: model, body: body,
+							 yearOfIssue: yearOfIssue,
+							 carNumber: carNumber))
 	}
 	
 	private func readStrongLine() -> String {
@@ -93,7 +96,8 @@ class MenuCars {
 		}
 	}
 	
-	private func printFiltredCars(body: Body) {
-		self.cars.filter { car in car.body == body }.forEach { print($0) }
+	private func printFiltredCars() {
+		let body = readBody()
+		self.cars.filter { $0.body == body }.forEach { print($0) }
 	}
 }
