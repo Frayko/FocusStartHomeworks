@@ -7,12 +7,12 @@
 
 import Foundation
 
-public class ThreadSafeArray <Elem : Equatable> {
-	private var items = [Elem]()
+public class ThreadSafeArray <T : Equatable> {
+	private var items = [T]()
 	private let isolationQueue = DispatchQueue(label: "ThreadSafeArray queue",
 											   attributes: .concurrent)
 	
-	public init (items: [Elem] = [Elem]()) {
+	public init (items: [T] = [T]()) {
 		isolationQueue.async(flags: .barrier) {
 			self.items = items
 		}
@@ -30,7 +30,7 @@ public class ThreadSafeArray <Elem : Equatable> {
 		}
 	}
 	
-	public func append (_ item: Elem) {
+	public func append (_ item: T) {
 		isolationQueue.async(flags: .barrier) {
 			self.items.append(item)
 		}
@@ -48,11 +48,11 @@ public class ThreadSafeArray <Elem : Equatable> {
 	}
 	
 	/*
-	 *	Если делать защиту от выхода за границу здесь, то тогда у нас будет возвращаться Elem?
+	 *	Если делать защиту от выхода за границу здесь, то тогда у нас будет возвращаться T?
 	 *	Иначе я не придумал что можно было бы сделать.
 	 * 	Но можно с ходу сделать защиту для set, просто обернув его в if с проверкой на index
 	*/
-	public subscript(index: Int) -> Elem {
+	public subscript(index: Int) -> T {
 		get {
 			isolationQueue.sync {
 				self.items[index]
@@ -70,7 +70,7 @@ public class ThreadSafeArray <Elem : Equatable> {
 		}
 	}
 	
-	public func contains(_ element: Elem) -> Bool {
+	public func contains(_ element: T) -> Bool {
 		isolationQueue.sync {
 			self.items.contains(element)
 		}
