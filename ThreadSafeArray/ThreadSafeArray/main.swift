@@ -8,7 +8,7 @@
 import Foundation
 
 let queue = DispatchQueue(label: "My Queue",
-							attributes: .concurrent)
+						  attributes: .concurrent)
 let queueTestGroup = DispatchGroup()
 let threadSafeArray = ThreadSafeArray<Int>()
 

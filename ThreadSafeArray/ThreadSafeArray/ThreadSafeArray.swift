@@ -10,7 +10,7 @@ import Foundation
 public class ThreadSafeArray <Elem : Equatable> {
 	private var items = [Elem]()
 	private let isolationQueue = DispatchQueue(label: "ThreadSafeArray queue",
-											  attributes: .concurrent)
+											   attributes: .concurrent)
 	
 	public init (items: [Elem] = [Elem]()) {
 		isolationQueue.async(flags: .barrier) {
