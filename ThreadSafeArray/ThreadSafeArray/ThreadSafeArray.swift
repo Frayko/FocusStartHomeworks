@@ -19,15 +19,11 @@ public class ThreadSafeArray <T : Equatable> {
 	}
 	
 	public var isEmpty: Bool {
-		isolationQueue.sync {
-			self.items.count == 0
-		}
+		self.items.isEmpty
 	}
 	
 	public var count: Int {
-		isolationQueue.sync {
-			self.items.count
-		}
+		self.items.count
 	}
 	
 	public func append (_ item: T) {
@@ -37,42 +33,28 @@ public class ThreadSafeArray <T : Equatable> {
 	}
 	
 	public func remove (at index: Int) {
-		if index >= 0 && index < self.count {
-			isolationQueue.async(flags: .barrier) {
+		isolationQueue.async(flags: .barrier) {
+			if index >= 0 && index < self.count {
 				self.items.remove(at: index)
 			}
-		}
-		else {
-			print("Выход за границы массива при удалении")
+			else {
+				print("Выход за границы массива при удалении")
+			}
 		}
 	}
 	
-	/*
-	 *	Если делать защиту от выхода за границу здесь, то тогда у нас будет возвращаться T?
-	 *	Иначе я не придумал что можно было бы сделать.
-	 * 	Но можно с ходу сделать защиту для set, просто обернув его в if с проверкой на index
-	*/
 	public subscript(index: Int) -> T {
 		get {
-			isolationQueue.sync {
-				self.items[index]
-			}
+			self.items[index]
 		}
 		set {
-			if index >= 0 && index < self.count {
-				isolationQueue.async(flags: .barrier) {
-					self.items[index] = newValue
-				}
-			}
-			else {
-				print("Выход за границы массива при замене элемента")
+			isolationQueue.async(flags: .barrier) {
+				self.items[index] = newValue
 			}
 		}
 	}
 	
 	public func contains(_ element: T) -> Bool {
-		isolationQueue.sync {
-			self.items.contains(element)
-		}
+		self.items.contains(element)
 	}
 }
