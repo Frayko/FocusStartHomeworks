@@ -11,12 +11,10 @@ public class ThreadSafeArray <T : Equatable> {
 	private var items = [T]()
 	private let isolationQueue = DispatchQueue(label: "ThreadSafeArray queue",
 											   attributes: .concurrent)
-	public init () {}
+	public init() {}
 	
-	public init (with content: T...) {
-		isolationQueue.async(flags: .barrier) {
-			self.items.append(contentsOf: content)
-		}
+	public init(with content: T...) {
+		self.items.append(contentsOf: content)
 	}
 	
 	public var isEmpty: Bool {
@@ -31,13 +29,13 @@ public class ThreadSafeArray <T : Equatable> {
 		}
 	}
 	
-	public func append (_ item: T) {
+	public func append(_ item: T) {
 		isolationQueue.async(flags: .barrier) {
 			self.items.append(item)
 		}
 	}
 	
-	public func remove (at index: Int) {
+	public func remove(at index: Int) {
 		isolationQueue.async(flags: .barrier) {
 			if index >= 0 && index < self.count {
 				self.items.remove(at: index)
@@ -53,38 +51,28 @@ public class ThreadSafeArray <T : Equatable> {
 			self.items.contains(element)
 		}
 	}
-	
-	public func getItems() -> [T] {
-		isolationQueue.sync {
-			self.items
-		}
-	}
 }
 
 public class ThreadSafeArrayIterator<T>: IteratorProtocol {
-	private var items = [T]()
+	private var items: [T]
 	private var currentIndex: Int = -1
-	private let isolationQueue = DispatchQueue(label: "ThreadSafeArray queue",
-											   attributes: .concurrent)
 	
 	public init(with items: [T]) {
-		isolationQueue.async(flags: .barrier) {
-			self.items = items
-		}
+		self.items = items
 	}
 
 	public func next() -> T? {
-		isolationQueue.sync {
-			self.currentIndex += 1
-			guard currentIndex < self.items.count else { return nil }
-			return items[currentIndex]
-		}
+		self.currentIndex += 1
+		guard currentIndex < self.items.count else { return nil }
+		return items[currentIndex]
 	}
 }
 
 extension ThreadSafeArray: Sequence {
 	public func makeIterator() -> ThreadSafeArrayIterator<T> {
-		ThreadSafeArrayIterator<T>(with: getItems())
+		isolationQueue.sync {
+			ThreadSafeArrayIterator<T>(with: self.items)
+		}
 	}
 }
 
