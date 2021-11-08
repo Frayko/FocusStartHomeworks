@@ -11,19 +11,24 @@ public class ThreadSafeArray <T : Equatable> {
 	private var items = [T]()
 	private let isolationQueue = DispatchQueue(label: "ThreadSafeArray queue",
 											   attributes: .concurrent)
+	public init () {}
 	
-	public init (items: [T] = [T]()) {
+	public init (with content: T...) {
 		isolationQueue.async(flags: .barrier) {
-			self.items = items
+			self.items.append(contentsOf: content)
 		}
 	}
 	
 	public var isEmpty: Bool {
-		self.items.isEmpty
+		isolationQueue.sync {
+			self.items.isEmpty
+		}
 	}
 	
 	public var count: Int {
-		self.items.count
+		isolationQueue.sync {
+			self.items.count
+		}
 	}
 	
 	public func append (_ item: T) {
@@ -43,9 +48,72 @@ public class ThreadSafeArray <T : Equatable> {
 		}
 	}
 	
+	public func contains(_ element: T) -> Bool {
+		isolationQueue.sync {
+			self.items.contains(element)
+		}
+	}
+	
+	public func getItems() -> [T] {
+		isolationQueue.sync {
+			self.items
+		}
+	}
+}
+
+public class ThreadSafeArrayIterator<T>: IteratorProtocol {
+	private var items = [T]()
+	private var currentIndex: Int = -1
+	private let isolationQueue = DispatchQueue(label: "ThreadSafeArray queue",
+											   attributes: .concurrent)
+	
+	public init(with items: [T]) {
+		isolationQueue.async(flags: .barrier) {
+			self.items = items
+		}
+	}
+
+	public func next() -> T? {
+		isolationQueue.sync {
+			self.currentIndex += 1
+			guard currentIndex < self.items.count else { return nil }
+			return items[currentIndex]
+		}
+	}
+}
+
+extension ThreadSafeArray: Sequence {
+	public func makeIterator() -> ThreadSafeArrayIterator<T> {
+		ThreadSafeArrayIterator<T>(with: getItems())
+	}
+}
+
+extension ThreadSafeArray: CustomStringConvertible {
+	public var description: String {
+		isolationQueue.sync {
+			"[ " + self.items.map { String(describing: $0) }.joined(separator: ", ") + " ]"
+		}
+	}
+}
+
+extension ThreadSafeArray: Collection {
+	public var startIndex: Int {
+		isolationQueue.sync {
+			self.items.startIndex
+		}
+	}
+
+	public var endIndex: Int {
+		isolationQueue.sync {
+			self.items.endIndex
+		}
+	}
+
 	public subscript(index: Int) -> T {
 		get {
-			self.items[index]
+			isolationQueue.sync {
+				self.items[index]
+			}
 		}
 		set {
 			isolationQueue.async(flags: .barrier) {
@@ -53,8 +121,10 @@ public class ThreadSafeArray <T : Equatable> {
 			}
 		}
 	}
-	
-	public func contains(_ element: T) -> Bool {
-		self.items.contains(element)
+
+	public func index(after i: Int) -> Int {
+		isolationQueue.sync {
+			i + 1
+		}
 	}
 }
