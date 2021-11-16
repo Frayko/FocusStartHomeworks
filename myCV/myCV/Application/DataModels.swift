@@ -8,6 +8,7 @@
 import Foundation
 
 struct Profile {
+	let photoName: String
 	let name: String
 	let surname: String
 	let age: Int

@@ -64,8 +64,21 @@ extension InterestsTabView: IInterestsTabView {
 		let imageView = UIImageView()
 		imageView.image = image
 		imageView.layer.cornerRadius = InterestsTabLayout.photoCornerRadius
+		imageView.layer.masksToBounds = true
 		imageView.contentMode = .scaleAspectFit
 		imageView.translatesAutoresizingMaskIntoConstraints = false
+		
+		let height = imageView.image?.size.height ?? 0
+		let width = imageView.image?.size.width ?? 0
+		let ratio = height / width
+		let widthAnchor = screenSize.width - (InterestsTabLayout.photoLeadingAnchor * 2)
+		let heightAnchor = ratio * widthAnchor
+		
+		NSLayoutConstraint.activate([
+			imageView.heightAnchor.constraint(equalToConstant: heightAnchor),
+			imageView.widthAnchor.constraint(equalToConstant: widthAnchor)
+		])
+		
 		return imageView
 	}
 }

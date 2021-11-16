@@ -8,6 +8,7 @@
 import UIKit
 
 protocol IProfileTabVC {
+	func setPhoto(named: String)
 	func setFullName(_ text: String)
 	func setAge(_ age: Int)
 	func setDescription(_ text: String)
@@ -32,6 +33,10 @@ final class ProfileTabVC: UIViewController {
 }
 
 extension ProfileTabVC: IProfileTabVC {
+	func setPhoto(named: String) {
+		self.rootView.setPhoto(named: named)
+	}
+	
 	func setFullName(_ text: String) {
 		self.rootView.setFullName(text)
 	}

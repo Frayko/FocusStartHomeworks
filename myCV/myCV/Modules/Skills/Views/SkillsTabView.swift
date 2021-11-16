@@ -66,7 +66,7 @@ final class SkillsTabView: UIView {
 	private func buildStatNameLanguage(_ text: String) -> UILabel {
 		let label = UILabel()
 		label.text = text
-		label.font = UIFont.systemFont(ofSize: 16)
+		label.font = UIFont.systemFont(ofSize: 20)
 		label.textAlignment = .center
 		label.textColor = UIColor.label
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -77,7 +77,7 @@ final class SkillsTabView: UIView {
 		let label = UILabel()
 		label.text = text
 		label.numberOfLines = 0
-		label.font = UIFont.systemFont(ofSize: 14)
+		label.font = UIFont.systemFont(ofSize: 16)
 		label.textAlignment = .center
 		label.textColor = UIColor.label
 		label.translatesAutoresizingMaskIntoConstraints = false

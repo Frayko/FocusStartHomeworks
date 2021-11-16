@@ -9,6 +9,7 @@ import UIKit
 
 protocol IProfileTabView: UIView {
 	func didLoad()
+	func setPhoto(named: String)
 	func setFullName(_ text: String)
 	func setAge(_ age: Int)
 	func setDescription(_ text: String)
@@ -16,10 +17,8 @@ protocol IProfileTabView: UIView {
 
 final class ProfileTabView: UIView {
 	private lazy var photoImageView: UIImageView = {
-		let image = UIImage(named: "photo")
 		let imageView = UIImageView()
-		imageView.image = image
-		imageView.contentMode = .scaleAspectFit
+		imageView.contentMode = .scaleAspectFill
 		imageView.layer.borderWidth = 2.0
 		imageView.layer.masksToBounds = true
 		imageView.layer.borderColor = UIColor.red.cgColor
@@ -32,7 +31,7 @@ final class ProfileTabView: UIView {
 	private lazy var fullNameLabel: UILabel = {
 		let label = UILabel()
 		label.backgroundColor = UIColor.systemBackground
-		label.font = UIFont.systemFont(ofSize: 22)
+		label.font = UIFont.systemFont(ofSize: 24)
 		label.contentMode = .scaleAspectFill
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
@@ -41,7 +40,7 @@ final class ProfileTabView: UIView {
 	private lazy var ageLabel: UILabel = {
 		let label = UILabel()
 		label.backgroundColor = UIColor.systemBackground
-		label.font = UIFont.systemFont(ofSize: 22)
+		label.font = UIFont.systemFont(ofSize: 24)
 		label.contentMode = .scaleAspectFill
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
@@ -50,8 +49,8 @@ final class ProfileTabView: UIView {
 	private lazy var descriptionTextView: UITextView = {
 		let textView = UITextView(frame: .zero, textContainer: nil)
 		textView.backgroundColor = UIColor.systemBackground
-		textView.font = UIFont.systemFont(ofSize: 14)
-		textView.textAlignment = .justified
+		textView.font = UIFont.systemFont(ofSize: 18)
+		textView.textAlignment = .left
 		textView.textColor = UIColor.label
 		textView.isEditable = false
 		textView.isSelectable = true
@@ -65,6 +64,10 @@ extension ProfileTabView : IProfileTabView {
 	func didLoad() {
 		configureUI()
 		configureLayout()
+	}
+	
+	func setPhoto(named: String) {
+		self.photoImageView.image = UIImage(named: named)
 	}
 	
 	func setFullName(_ text: String) {
@@ -93,8 +96,8 @@ private extension ProfileTabView {
 		
 		NSLayoutConstraint.activate([
 			self.photoImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-			self.photoImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor,
-														 constant: -(self.bounds.height / 4)),
+			self.photoImageView.topAnchor.constraint(equalTo: self.topAnchor,
+													 constant: (self.bounds.height / 8)),
 			self.photoImageView.heightAnchor.constraint(equalToConstant: self.bounds.width / 100 * 50),
 			self.photoImageView.widthAnchor.constraint(equalToConstant: self.bounds.width / 100 * 50)
 		])

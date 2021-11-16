@@ -10,13 +10,12 @@ import Foundation
 final class DataMapper {
 	private lazy var profileData: Profile = {
 		let description = """
-				ewqqwdqwd qwdewq wdq qdwqd wqd qwx dwqd qwd hjvgwqj dgvqwjd vqwjg dhvqjgdvqwgdvwqjg
-			ewqdsad asd ad as das das
-			qwe qds dqw dqwdwq
-			ewqdqdwq
+			    Родился в городе Усть-Илимск.
+			    В 16 лет понял, что не хочу обучаться в местном университете (он у нас всего 1 на минуточку :D) и к 18 годам переехал в Новосибирск, где поступил в НГТУ на программного инженера на контрактной основе. Чуть позже перевёлся на бюджет.
 			"""
 		
-		let profile = Profile(name: "Александр",
+		let profile = Profile(photoName: "avatar",
+							  name: "Александр",
 							  surname: "Фомин",
 							  age: 21,
 							  description: description)
@@ -24,26 +23,49 @@ final class DataMapper {
 	}()
 	
 	private lazy var skillsData: Skills = {
-		let langs = [Language(name: "C++",
-							  photoName: "c++",
-							  experience: "ddwqdqeqdwq"),
-					 Language(name: "Java",
+		let history = """
+				Программированием я стал заниматься в 16 лет, сначала это была веб разработка, где выигрывал в месных конкурсах веб разработчиков моих лет, а потом на первых курсах университета начал изучать C/C++ и Java, полностью забросив веб.
+				Сейчас я заканчиваю последний курс бакалавриата и в качестве дипломной работы хочу разработать приложение на iOS. Swift я изучаю буквально пару месяцев, но обучение идёт довольно легко, потому что многие вещи схожи с тем, что я делал ранее в других языках.
+				От обучения ожидаю получение знаний различных методов разработки под Swift как графического интерфейсов, так и архитектурных решений. Буду рад стать частью Вашей команды!)
+			"""
+		
+		let javaExp = "Разрабатывал приложение для симуляции плавающих рыбок с их временем жизни, различным поведением и возможностью сохранения местоположения всех рыбок в СУБД PostgreSQL / файл"
+		
+		let cPlusPlusExp = "На этом языке я в основном практиковал алгоритмы и структуры данных, работу с СУБД и параллельное программирование"
+		
+		let langs = [Language(name: "Java",
 							  photoName: "java",
-							  experience: "wqeqdwqn\n\newqewqeqwe\nqweqweq")
+							  experience: javaExp),
+					 Language(name: "C++",
+							  photoName: "c++",
+							  experience: cPlusPlusExp),
 					 ]
-		let skills = Skills(history: "dwqdwqdqw\n\ndqwdq\newqdqweq\nweqwdqwd", languages: langs)
+		let skills = Skills(history: history,
+							languages: langs)
 		return skills
 	}()
 	
 	private lazy var interestsData: Interests = {
-		let interests = Interests(info: "dsadsqwdqdqdqwwqdq\n\n\n\n\nweqeqwdwqdwq",
-								  imageNames: ["java", "c++"])
+		let info = """
+				В свободное от учёбы время я предпочитаю проводить за просмотром фильмов/аниме, чтением технической литературы или манги, игрой в настольный теннис и посиделками с друзьями.
+				Также мне очень нравится путешествовать. Чуть ниже прикладываю фотографии из некоторых поездок.
+			"""
+		
+		let interests = Interests(info: info,
+								  imageNames: ["photo-1",
+											   "photo-2",
+											   "photo-3",
+											   "photo-4",
+											   "photo-5",
+											   "photo-6",
+											   "photo-7"])
 		return interests
 	}()
 }
 
 extension DataMapper {
 	func setProfileTabViewData(_ viewController: IProfileTabVC) {
+		viewController.setPhoto(named: profileData.photoName)
 		viewController.setFullName(profileData.fullName)
 		viewController.setAge(profileData.age)
 		viewController.setDescription(profileData.description)
