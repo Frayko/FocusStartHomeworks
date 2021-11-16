@@ -7,6 +7,8 @@
 
 import UIKit
 enum ProfileTabLayout {
+	static let imageViewCornerRadius: CGFloat = 25.0
+	
 	static let topAnchorLabel: CGFloat = 5
 	
 	static let topAnchorText: CGFloat = 10

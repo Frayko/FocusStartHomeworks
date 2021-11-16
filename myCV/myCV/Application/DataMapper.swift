@@ -7,44 +7,23 @@
 
 import Foundation
 
-struct Profile {
-	let name: String
-	let surname: String
-	let age: Int
-	let description: String
-	
-	var fullName: String {
-		self.name + " " + self.surname
-	}
-}
-
-struct Language {
-	let name: String
-	let photoName: String
-	let experience: String
-}
-
-struct Skills {
-	let history: String
-	let languages: [Language]
-}
-
 final class DataMapper {
-	private let profileData: Profile
-	private let skillsData: Skills
-	
-	init() {
-		let descText = """
+	private lazy var profileData: Profile = {
+		let description = """
 				ewqqwdqwd qwdewq wdq qdwqd wqd qwx dwqd qwd hjvgwqj dgvqwjd vqwjg dhvqjgdvqwgdvwqjg
 			ewqdsad asd ad as das das
 			qwe qds dqw dqwdwq
 			ewqdqdwq
 			"""
 		
-		profileData = Profile(name: "Test",
-							  surname: "Test2",
-							  age: 999,
-							  description: descText)
+		let profile = Profile(name: "Александр",
+							  surname: "Фомин",
+							  age: 21,
+							  description: description)
+		return profile
+	}()
+	
+	private lazy var skillsData: Skills = {
 		let langs = [Language(name: "C++",
 							  photoName: "c++",
 							  experience: "ddwqdqeqdwq"),
@@ -52,11 +31,18 @@ final class DataMapper {
 							  photoName: "java",
 							  experience: "wqeqdwqn\n\newqewqeqwe\nqweqweq")
 					 ]
-		skillsData = Skills(history: "dwqdwqdqw\n\ndqwdq\newqdqweq\nweqwdqwd", languages: langs)
-		
-		
-	}
+		let skills = Skills(history: "dwqdwqdqw\n\ndqwdq\newqdqweq\nweqwdqwd", languages: langs)
+		return skills
+	}()
 	
+	private lazy var interestsData: Interests = {
+		let interests = Interests(info: "dsadsqwdqdqdqwwqdq\n\n\n\n\nweqeqwdwqdwq",
+								  imageNames: ["java", "c++"])
+		return interests
+	}()
+}
+
+extension DataMapper {
 	func setProfileTabViewData(_ viewController: IProfileTabVC) {
 		viewController.setFullName(profileData.fullName)
 		viewController.setAge(profileData.age)
@@ -70,5 +56,10 @@ final class DataMapper {
 										languagePhotoName: skillsData.languages[i].photoName,
 										experience: skillsData.languages[i].experience)
 		}
+	}
+	
+	func setInterestsTabViewData(_ viewController: IInterestsTabVC) {
+		viewController.setInfo(interestsData.info)
+		viewController.setImages(items: interestsData.imageNames)
 	}
 }

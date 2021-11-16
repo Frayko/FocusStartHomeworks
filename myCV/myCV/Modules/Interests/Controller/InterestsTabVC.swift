@@ -8,7 +8,8 @@
 import UIKit
 
 protocol IInterestsTabVC {
-	
+	func setInfo(_ text: String)
+	func setImages(items: [String])
 }
 
 final class InterestsTabVC: UIViewController {
@@ -30,5 +31,11 @@ final class InterestsTabVC: UIViewController {
 }
 
 extension InterestsTabVC: IInterestsTabVC {
+	func setInfo(_ text: String) {
+		rootView.setInfo(text)
+	}
 	
+	func setImages(items: [String]) {
+		rootView.setImages(items: items)
+	}
 }

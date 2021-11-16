@@ -9,13 +9,21 @@ import Foundation
 import UIKit
 
 final class ScreensFactory {
+	static let dataMapper = DataMapper()
+	
 	static func makeProfileScreen() -> ProfileTabVC {
-		return ProfileTabVC()
+		let controller = ProfileTabVC()
+		dataMapper.setProfileTabViewData(controller)
+		return controller
 	}
 	static func makeSkillsScreen() -> SkillsTabVC {
-		return SkillsTabVC()
+		let controller = SkillsTabVC()
+		dataMapper.setSkillsTabViewData(controller)
+		return controller
 	}
 	static func makeInterestsScreen() -> InterestsTabVC {
-		return InterestsTabVC()
+		let controller = InterestsTabVC()
+		dataMapper.setInterestsTabViewData(controller)
+		return controller
 	}
 }

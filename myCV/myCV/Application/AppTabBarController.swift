@@ -33,11 +33,11 @@ private extension AppTabBarController {
 	func configureTabs() {
 		let profileTabVC = ScreensFactory.makeProfileScreen()
 		profileTabVC.tabBarItem = createAboutMeTab()
-		dataMapper.setProfileTabViewData(profileTabVC)
+		//dataMapper.setProfileTabViewData(profileTabVC)
 		
 		let skillsTabVC = ScreensFactory.makeSkillsScreen()
 		skillsTabVC.tabBarItem = createSkillsTab()
-		dataMapper.setSkillsTabViewData(skillsTabVC)
+		//dataMapper.setSkillsTabViewData(skillsTabVC)
 		
 		let interestsTabVC = ScreensFactory.makeInterestsScreen()
 		interestsTabVC.tabBarItem = createInterestsTab()

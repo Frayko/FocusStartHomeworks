@@ -148,8 +148,8 @@ private extension SkillsTabView {
 			
 			if i == statsStackView.count - 1 {
 				NSLayoutConstraint.activate([
-					statsStackView[i].trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-					statsStackView[i].bottomAnchor.constraint(equalTo: scrollView.bottomAnchor,
+					statsStackView[i].trailingAnchor.constraint(equalTo: scrollArea.trailingAnchor),
+					statsStackView[i].bottomAnchor.constraint(equalTo: scrollArea.bottomAnchor,
 															  constant: SkillsTabLayout.scrollViewBottomAnchor)
 				])
 			}

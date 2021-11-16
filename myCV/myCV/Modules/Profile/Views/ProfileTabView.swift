@@ -17,16 +17,13 @@ protocol IProfileTabView: UIView {
 final class ProfileTabView: UIView {
 	private lazy var photoImageView: UIImageView = {
 		let image = UIImage(named: "photo")
-		let imageView = UIImageView(frame: CGRect(x: 0,
-												  y: 0,
-												  width: (image?.size.width ?? 0),
-												  height: (image?.size.height ?? 0)))
+		let imageView = UIImageView()
 		imageView.image = image
 		imageView.contentMode = .scaleAspectFit
 		imageView.layer.borderWidth = 2.0
 		imageView.layer.masksToBounds = true
 		imageView.layer.borderColor = UIColor.red.cgColor
-		imageView.layer.cornerRadius = imageView.frame.width / 4
+		imageView.layer.cornerRadius = ProfileTabLayout.imageViewCornerRadius
 		imageView.clipsToBounds = true
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		return imageView
