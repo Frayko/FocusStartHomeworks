@@ -14,4 +14,6 @@ enum ProfileTabLayout {
 	static let topAnchorText: CGFloat = 10
 	static let leadingAnchorText: CGFloat = 10
 	static let trailingAnchorText: CGFloat = -leadingAnchorText
+	
+	static let scrollViewBottomAnchor: CGFloat = -5.0
 }

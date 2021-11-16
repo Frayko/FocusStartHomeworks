@@ -16,6 +16,13 @@ protocol IProfileTabView: UIView {
 }
 
 final class ProfileTabView: UIView {
+	private lazy var scrollView: UIScrollView = {
+		let scrollView = UIScrollView()
+		scrollView.translatesAutoresizingMaskIntoConstraints = false
+		scrollView.layer.masksToBounds = true
+		return scrollView
+	}()
+	
 	private lazy var photoImageView: UIImageView = {
 		let imageView = UIImageView()
 		imageView.contentMode = .scaleAspectFill
@@ -63,7 +70,8 @@ final class ProfileTabView: UIView {
 extension ProfileTabView : IProfileTabView {
 	func didLoad() {
 		configureUI()
-		configureLayout()
+		configureLayoutView()
+		configureLayoutScrollView()
 	}
 	
 	func setPhoto(named: String) {
@@ -88,28 +96,29 @@ private extension ProfileTabView {
 		self.backgroundColor = UIColor.systemBackground
 	}
 	
-	func configureLayout() {
-		self.addSubview(photoImageView)
-		self.addSubview(fullNameLabel)
-		self.addSubview(ageLabel)
-		self.addSubview(descriptionTextView)
+	func configureLayoutView() {
+		let scrollArea = scrollView.contentLayoutGuide
+		self.scrollView.addSubview(photoImageView)
+		self.scrollView.addSubview(fullNameLabel)
+		self.scrollView.addSubview(ageLabel)
+		self.scrollView.addSubview(descriptionTextView)
 		
 		NSLayoutConstraint.activate([
-			self.photoImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-			self.photoImageView.topAnchor.constraint(equalTo: self.topAnchor,
+			self.photoImageView.centerXAnchor.constraint(equalTo: scrollArea.centerXAnchor),
+			self.photoImageView.topAnchor.constraint(equalTo: scrollArea.topAnchor,
 													 constant: (self.bounds.height / 8)),
 			self.photoImageView.heightAnchor.constraint(equalToConstant: self.bounds.width / 100 * 50),
 			self.photoImageView.widthAnchor.constraint(equalToConstant: self.bounds.width / 100 * 50)
 		])
 
 		NSLayoutConstraint.activate([
-			self.fullNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			self.fullNameLabel.centerXAnchor.constraint(equalTo: scrollArea.centerXAnchor),
 			self.fullNameLabel.topAnchor.constraint(equalTo: self.photoImageView.bottomAnchor,
 													constant: ProfileTabLayout.topAnchorLabel)
 		])
 		
 		NSLayoutConstraint.activate([
-			self.ageLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			self.ageLabel.centerXAnchor.constraint(equalTo: scrollArea.centerXAnchor),
 			self.ageLabel.topAnchor.constraint(equalTo: self.fullNameLabel.bottomAnchor,
 											   constant: ProfileTabLayout.topAnchorLabel)
 		])
@@ -117,10 +126,27 @@ private extension ProfileTabView {
 		NSLayoutConstraint.activate([
 			self.descriptionTextView.topAnchor.constraint(equalTo: self.ageLabel.bottomAnchor,
 														  constant: ProfileTabLayout.topAnchorText),
-			self.descriptionTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor,
+			self.descriptionTextView.leadingAnchor.constraint(equalTo: scrollArea.leadingAnchor,
 															  constant: ProfileTabLayout.leadingAnchorText),
-			self.descriptionTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor,
-															   constant: ProfileTabLayout.trailingAnchorText)
+			self.descriptionTextView.trailingAnchor.constraint(equalTo: scrollArea.trailingAnchor,
+															   constant: ProfileTabLayout.trailingAnchorText),
+			self.descriptionTextView.bottomAnchor.constraint(equalTo: scrollArea.bottomAnchor,
+															 constant: ProfileTabLayout.scrollViewBottomAnchor)
+		])
+	}
+	
+	func configureLayoutScrollView() {
+		let safeArea = self.safeAreaLayoutGuide
+		self.addSubview(scrollView)
+
+		NSLayoutConstraint.activate([
+			scrollView.frameLayoutGuide.topAnchor.constraint(equalTo: safeArea.topAnchor),
+			scrollView.frameLayoutGuide.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+			scrollView.frameLayoutGuide.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+			scrollView.frameLayoutGuide.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+			scrollView.contentLayoutGuide.topAnchor.constraint(equalTo: scrollView.frameLayoutGuide.topAnchor),
+			scrollView.contentLayoutGuide.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor),
+			scrollView.contentLayoutGuide.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor)
 		])
 	}
 }
