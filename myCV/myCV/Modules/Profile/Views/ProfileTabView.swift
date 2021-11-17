@@ -62,6 +62,8 @@ final class ProfileTabView: UIView {
 		textView.isEditable = false
 		textView.isSelectable = true
 		textView.isScrollEnabled = false
+		textView.layer.cornerRadius = ProfileTabLayout.textCornerRadius
+		textView.backgroundColor = .lightText
 		textView.translatesAutoresizingMaskIntoConstraints = false
 		return textView
 	}()

@@ -23,12 +23,19 @@ final class InterestsTabView: UIView {
 		return scrollView
 	}()
 	
-	private lazy var infoLabel: UILabel = {
-		let label = UILabel()
-		label.numberOfLines = 0
-		label.font = UIFont.systemFont(ofSize: 16)
-		label.translatesAutoresizingMaskIntoConstraints = false
-		return label
+	private lazy var infoTextView: UITextView = {
+		let textView = UITextView(frame: .zero, textContainer: nil)
+		textView.backgroundColor = UIColor.systemBackground
+		textView.font = UIFont.systemFont(ofSize: 16)
+		textView.textAlignment = .left
+		textView.textColor = UIColor.label
+		textView.isEditable = false
+		textView.isSelectable = true
+		textView.isScrollEnabled = false
+		textView.layer.cornerRadius = InterestsTabLayout.textCornerRadius
+		textView.backgroundColor = .lightText
+		textView.translatesAutoresizingMaskIntoConstraints = false
+		return textView
 	}()
 	
 	private lazy var imageStackView: UIStackView = {
@@ -49,7 +56,7 @@ extension InterestsTabView: IInterestsTabView {
 	}
 	
 	func setInfo(_ text: String) {
-		self.infoLabel.text = text
+		self.infoTextView.text = text
 	}
 	
 	func setImages(items: [String]) {
@@ -90,21 +97,21 @@ private extension InterestsTabView {
 	
 	func configureLayoutView() {
 		let scrollArea = scrollView.contentLayoutGuide
-		self.scrollView.addSubview(self.infoLabel)
+		self.scrollView.addSubview(self.infoTextView)
 		self.scrollView.addSubview(self.imageStackView)
 		
 		NSLayoutConstraint.activate([
-			self.infoLabel.topAnchor.constraint(equalTo: scrollArea.topAnchor,
+			self.infoTextView.topAnchor.constraint(equalTo: scrollArea.topAnchor,
 												constant: InterestsTabLayout.scrollViewTopAnchor),
-			self.infoLabel.leadingAnchor.constraint(equalTo: scrollArea.leadingAnchor,
+			self.infoTextView.leadingAnchor.constraint(equalTo: scrollArea.leadingAnchor,
 													constant: InterestsTabLayout.scrollViewLeadingAnchor),
-			self.infoLabel.trailingAnchor.constraint(equalTo: scrollArea.trailingAnchor,
+			self.infoTextView.trailingAnchor.constraint(equalTo: scrollArea.trailingAnchor,
 													 constant: InterestsTabLayout.scrollViewTrailingAnchor)
 		])
 		
 		NSLayoutConstraint.activate([
 			self.imageStackView.centerXAnchor.constraint(equalTo: scrollArea.centerXAnchor),
-			self.imageStackView.topAnchor.constraint(equalTo: self.infoLabel.bottomAnchor,
+			self.imageStackView.topAnchor.constraint(equalTo: self.infoTextView.bottomAnchor,
 													 constant: InterestsTabLayout.photoTopAnchor),
 			self.imageStackView.leadingAnchor.constraint(equalTo: scrollArea.leadingAnchor,
 														 constant: InterestsTabLayout.photoLeadingAnchor),

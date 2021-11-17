@@ -15,6 +15,8 @@ enum InterestsTabLayout {
 	
 	static let photosStackViewSpacing: CGFloat = 10.0
 	
+	static let textCornerRadius: CGFloat = 15.0
+	
 	static let scrollViewTopAnchor: CGFloat = 20.0
 	static let scrollViewLeadingAnchor: CGFloat = 20.0
 	static let scrollViewTrailingAnchor: CGFloat = -scrollViewLeadingAnchor

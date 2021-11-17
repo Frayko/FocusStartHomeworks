@@ -12,8 +12,10 @@ enum SkillsTabLayout {
 	
 	static let statStackViewSpacing: CGFloat = 5.0
 	
+	static let textCornerRadius: CGFloat = 15.0
+	
 	static let scrollViewTopAnchor: CGFloat = 20.0
-	static let scrollViewLeadingAnchor: CGFloat = 20.0
+	static let scrollViewLeadingAnchor: CGFloat = 10.0
 	static let scrollViewTrailingAnchor: CGFloat = -scrollViewLeadingAnchor
 	static let scrollViewBottomAnchor: CGFloat = -5.0
 }

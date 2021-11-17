@@ -26,12 +26,19 @@ final class SkillsTabView: UIView {
 		return scrollView
 	}()
 	
-	private lazy var historyLabel: UILabel = {
-		let label = UILabel()
-		label.numberOfLines = 0
-		label.font = UIFont.systemFont(ofSize: 16)
-		label.translatesAutoresizingMaskIntoConstraints = false
-		return label
+	private lazy var historyText: UITextView = {
+		let textView = UITextView()
+		textView.backgroundColor = UIColor.systemBackground
+		textView.font = UIFont.systemFont(ofSize: 16)
+		textView.textAlignment = .left
+		textView.textColor = UIColor.label
+		textView.isEditable = false
+		textView.isSelectable = true
+		textView.isScrollEnabled = false
+		textView.layer.cornerRadius = SkillsTabLayout.textCornerRadius
+		textView.backgroundColor = .lightText
+		textView.translatesAutoresizingMaskIntoConstraints = false
+		return textView
 	}()
 	
 	private func addStatItem(_ languageName: String,
@@ -73,15 +80,20 @@ final class SkillsTabView: UIView {
 		return label
 	}
 	
-	private func buildStatTextExperience(_ text: String) -> UILabel {
-		let label = UILabel()
-		label.text = text
-		label.numberOfLines = 0
-		label.font = UIFont.systemFont(ofSize: 16)
-		label.textAlignment = .center
-		label.textColor = UIColor.label
-		label.translatesAutoresizingMaskIntoConstraints = false
-		return label
+	private func buildStatTextExperience(_ text: String) -> UITextView {
+		let textView = UITextView()
+		textView.text = text
+		textView.backgroundColor = UIColor.systemBackground
+		textView.font = UIFont.systemFont(ofSize: 16)
+		textView.textAlignment = .left
+		textView.textColor = UIColor.label
+		textView.isEditable = false
+		textView.isSelectable = true
+		textView.isScrollEnabled = false
+		textView.layer.cornerRadius = SkillsTabLayout.textCornerRadius
+		textView.backgroundColor = .lightText
+		textView.translatesAutoresizingMaskIntoConstraints = false
+		return textView
 	}
 }
 
@@ -93,7 +105,7 @@ extension SkillsTabView: ISkillsTabView {
 	}
 	
 	func setHistory(_ text: String) {
-		self.historyLabel.text = text
+		self.historyText.text = text
 	}
 	
 	func addStatistic(_ languageName: String,
@@ -112,19 +124,19 @@ private extension SkillsTabView {
 	
 	func configureLayoutView() {
 		let scrollArea = scrollView.contentLayoutGuide
-		self.scrollView.addSubview(self.historyLabel)
+		self.scrollView.addSubview(self.historyText)
 		
 		NSLayoutConstraint.activate([
-			self.historyLabel.topAnchor.constraint(equalTo: scrollArea.topAnchor,
+			self.historyText.topAnchor.constraint(equalTo: scrollArea.topAnchor,
 												   constant: SkillsTabLayout.scrollViewTopAnchor),
-			self.historyLabel.leadingAnchor.constraint(equalTo: scrollArea.leadingAnchor,
+			self.historyText.leadingAnchor.constraint(equalTo: scrollArea.leadingAnchor,
 													   constant: SkillsTabLayout.scrollViewLeadingAnchor),
-			self.historyLabel.trailingAnchor.constraint(equalTo: scrollArea.trailingAnchor,
+			self.historyText.trailingAnchor.constraint(equalTo: scrollArea.trailingAnchor,
 														constant: SkillsTabLayout.scrollViewTrailingAnchor)
 		])
 		
 		guard statsStackView.count != 0 else {
-			self.historyLabel.bottomAnchor.constraint(equalTo: scrollArea.bottomAnchor,
+			self.historyText.bottomAnchor.constraint(equalTo: scrollArea.bottomAnchor,
 													  constant: SkillsTabLayout.scrollViewBottomAnchor).isActive = true
 			return
 		}
@@ -133,7 +145,7 @@ private extension SkillsTabView {
 			self.scrollView.addSubview(statsStackView[i])
 			
 			if i == 0 {
-				statsStackView[i].topAnchor.constraint(equalTo: self.historyLabel.bottomAnchor,
+				statsStackView[i].topAnchor.constraint(equalTo: self.historyText.bottomAnchor,
 													   constant: SkillsTabLayout.scrollViewTopAnchor).isActive = true
 			}
 			else {
@@ -143,12 +155,14 @@ private extension SkillsTabView {
 			
 			NSLayoutConstraint.activate([
 				statsStackView[i].centerXAnchor.constraint(equalTo: scrollArea.centerXAnchor),
-				statsStackView[i].leadingAnchor.constraint(equalTo: scrollArea.leadingAnchor)
+				statsStackView[i].leadingAnchor.constraint(equalTo: scrollArea.leadingAnchor,
+														   constant: SkillsTabLayout.scrollViewLeadingAnchor)
 			])
 			
 			if i == statsStackView.count - 1 {
 				NSLayoutConstraint.activate([
-					statsStackView[i].trailingAnchor.constraint(equalTo: scrollArea.trailingAnchor),
+					statsStackView[i].trailingAnchor.constraint(equalTo: scrollArea.trailingAnchor,
+																constant: SkillsTabLayout.scrollViewTrailingAnchor),
 					statsStackView[i].bottomAnchor.constraint(equalTo: scrollArea.bottomAnchor,
 															  constant: SkillsTabLayout.scrollViewBottomAnchor)
 				])
