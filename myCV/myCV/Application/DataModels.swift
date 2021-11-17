@@ -5,8 +5,6 @@
 //  Created by Александр Фомин on 16.11.2021.
 //
 
-import Foundation
-
 struct Profile {
 	let photoName: String
 	let name: String

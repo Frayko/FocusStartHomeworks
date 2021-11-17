@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol IInterestsTabVC {
+protocol IInterestsTabVC: UIViewController {
 	func setInfo(_ text: String)
 	func setImages(items: [String])
 }

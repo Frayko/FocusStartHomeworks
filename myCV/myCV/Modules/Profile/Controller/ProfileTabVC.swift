@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol IProfileTabVC {
+protocol IProfileTabVC: UIViewController {
 	func setPhoto(named: String)
 	func setFullName(_ text: String)
 	func setAge(_ age: Int)

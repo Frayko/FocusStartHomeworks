@@ -8,8 +8,6 @@
 import UIKit
 
 final class AppTabBarController: UITabBarController {
-	private let dataMapper = DataMapper()
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		configureTabBar()

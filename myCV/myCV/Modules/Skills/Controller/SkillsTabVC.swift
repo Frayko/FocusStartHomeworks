@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ISkillsTabVC {
+protocol ISkillsTabVC: UIViewController {
 	func setHistory(_ text: String)
 	func addStatistic(languageName: String, languagePhotoName: String, experience: String)
 }

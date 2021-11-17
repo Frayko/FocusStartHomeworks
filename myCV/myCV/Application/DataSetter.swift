@@ -5,9 +5,7 @@
 //  Created by Александр Фомин on 13.11.2021.
 //
 
-import Foundation
-
-final class DataMapper {
+final class DataSetter {
 	private lazy var profileData: Profile = {
 		let description = """
 			    Родился в городе Усть-Илимск.
@@ -63,7 +61,7 @@ final class DataMapper {
 	}()
 }
 
-extension DataMapper {
+extension DataSetter {
 	func setProfileTabViewData(_ viewController: IProfileTabVC) {
 		viewController.setPhoto(named: profileData.photoName)
 		viewController.setFullName(profileData.fullName)
