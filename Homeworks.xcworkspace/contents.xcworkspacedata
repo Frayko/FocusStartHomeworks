@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../Downloads/CollectionApp/CollectionApp.xcodeproj">
+      location = "group:CollectionApp/CollectionApp.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:myCV/myCV.xcodeproj">
