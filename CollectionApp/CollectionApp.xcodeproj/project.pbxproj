@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		97758E5B2748D746006FDDE4 /* Anime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97758E5A2748D746006FDDE4 /* Anime.swift */; };
 		978C4FE4274749E400C73472 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978C4FE3274749E400C73472 /* AppDelegate.swift */; };
 		978C4FE6274749E400C73472 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978C4FE5274749E400C73472 /* SceneDelegate.swift */; };
 		978C4FED274749E400C73472 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 978C4FEC274749E400C73472 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		97758E5A2748D746006FDDE4 /* Anime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anime.swift; sourceTree = "<group>"; };
 		978C4FE0274749E400C73472 /* CollectionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		978C4FE3274749E400C73472 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		978C4FE5274749E400C73472 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,6 +35,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		97758E572748D167006FDDE4 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				97758E592748D1A3006FDDE4 /* AnimeCollection */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		97758E582748D173006FDDE4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				97758E5A2748D746006FDDE4 /* Anime.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		97758E592748D1A3006FDDE4 /* AnimeCollection */ = {
+			isa = PBXGroup;
+			children = (
+				97758E712748E08E006FDDE4 /* Views */,
+				97758E722748E095006FDDE4 /* Controller */,
+			);
+			path = AnimeCollection;
+			sourceTree = "<group>";
+		};
+		97758E712748E08E006FDDE4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		97758E722748E095006FDDE4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		978C4FD7274749E400C73472 = {
 			isa = PBXGroup;
 			children = (
@@ -53,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				978C4FF7274749F200C73472 /* Application */,
+				97758E572748D167006FDDE4 /* Modules */,
+				97758E582748D173006FDDE4 /* Model */,
 				978C4FF827474A0C00C73472 /* Resourses */,
 			);
 			path = CollectionApp;
@@ -149,6 +192,7 @@
 			files = (
 				978C4FE4274749E400C73472 /* AppDelegate.swift in Sources */,
 				978C4FE6274749E400C73472 /* SceneDelegate.swift in Sources */,
+				97758E5B2748D746006FDDE4 /* Anime.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
