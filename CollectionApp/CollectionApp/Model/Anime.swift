@@ -9,7 +9,7 @@ import Foundation
 
 struct Anime {
 	let imageName: String
-	let name: String
+	let title: String
 	let tags: [String]
 	let description: String
 	let identifier = UUID()
@@ -18,7 +18,7 @@ struct Anime {
 		guard let filterText = filter else { return true }
 		if filterText.isEmpty { return true }
 		let lowercasedFilter = filterText.lowercased()
-		return name.lowercased().contains(lowercasedFilter)
+		return title.lowercased().contains(lowercasedFilter)
 	}
 }
 

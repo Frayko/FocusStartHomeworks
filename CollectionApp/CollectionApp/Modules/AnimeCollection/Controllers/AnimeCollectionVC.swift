@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AnimeControllerVC: UIViewController {
+final class AnimeCollectionVC: UIViewController {
 	enum Section: CaseIterable {
 		case main
 	}
@@ -36,19 +36,38 @@ final class AnimeControllerVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		navigationItem.title = "Каталог аниме"
+		navigationItem.backButtonDisplayMode = .minimal
+		animesCollectionView.delegate = self
+		self.view.addSubview(animesCollectionView)
+		animesCollectionView.frame = self.view.bounds
 		configureView()
 		configureDataSource()
 		performQuery(with: nil)
 	}
 }
 
-extension AnimeControllerVC {
-	func configureDataSource() {
+extension AnimeCollectionVC: UICollectionViewDelegate {
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		animesCollectionView.deselectItem(at: indexPath, animated: true)
+		guard let anime = dataSource.itemIdentifier(for: indexPath) else {
+			return
+		}
 		
+		let animePageVC: IAnimePageVC = AnimePageVC()
+		animePageVC.setImage(named: anime.imageName)
+		animePageVC.setTitle(anime.title)
+		animePageVC.setTags(anime.tags)
+		animePageVC.setDescription(anime.description)
+		self.navigationController?.pushViewController(animePageVC, animated: true)
+	}
+}
+
+private extension AnimeCollectionVC {
+	func configureDataSource() {
 		let cellRegistration = UICollectionView.CellRegistration
 		<AnimeCell, Anime> { (cell, indexPath, anime) in
 			cell.setImage(named: anime.imageName)
-			cell.setTitle(anime.name)
+			cell.setTitle(anime.title)
 		}
 		
 		dataSource = UICollectionViewDiffableDataSource<Section, Anime>(collectionView: animesCollectionView) {
@@ -58,7 +77,7 @@ extension AnimeControllerVC {
 	}
 	
 	func performQuery(with filter: String?) {
-		let animes = animesController.filteredAnimes(with: filter).sorted { $0.name < $1.name }
+		let animes = animesController.filteredAnimes(with: filter).sorted { $0.title < $1.title }
 
 		var snapshot = NSDiffableDataSourceSnapshot<Section, Anime>()
 		snapshot.appendSections([.main])
@@ -67,7 +86,7 @@ extension AnimeControllerVC {
 	}
 }
 
-extension AnimeControllerVC {
+private extension AnimeCollectionVC {
 	func createLayout() -> UICollectionViewLayout {
 		let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int,
 			layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection in
@@ -115,7 +134,7 @@ extension AnimeControllerVC {
 	}
 }
 
-extension AnimeControllerVC: UISearchBarDelegate {
+extension AnimeCollectionVC: UISearchBarDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 		performQuery(with: searchText)
 	}

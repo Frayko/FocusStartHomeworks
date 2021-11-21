@@ -22,14 +22,24 @@ final class AnimesController {
 }
 
 extension AnimesController {
-	private func generateAnimes() -> [Anime] {
+	func getAnime(at index: Int) -> Anime {
+		animes[index]
+	}
+	
+	func getAnimes() -> [Anime] {
+		animes
+	}
+}
+
+private extension AnimesController {
+	func generateAnimes() -> [Anime] {
 		let components = Animes.animeRawData.components(separatedBy: CharacterSet.newlines)
 		var animes = [Anime]()
 		
 		for line in components {
 			let animeComponents = line.components(separatedBy: ";")
 			let imageName = animeComponents[0]
-			let name = animeComponents[1]
+			let title = animeComponents[1]
 			var tags = [String]()
 			let tagComponents = animeComponents[2].components(separatedBy: ",")
 			for tag in tagComponents {
@@ -37,7 +47,7 @@ extension AnimesController {
 			}
 			let description = animeComponents[3]
 			animes.append(Anime(imageName: imageName,
-								name: name,
+								title: title,
 								tags: tags,
 								description: description))
 		}
