@@ -62,6 +62,7 @@ private extension AnimeCell {
 		])
 		
 		contentView.addSubview(self.title)
+		
 		NSLayoutConstraint.activate([
 			self.title.topAnchor.constraint(equalTo: self.imageView.bottomAnchor,
 											constant: AnimeCollectionLayout.animeCellBottomAnchor),

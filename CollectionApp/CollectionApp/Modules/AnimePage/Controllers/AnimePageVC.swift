@@ -19,6 +19,7 @@ final class AnimePageVC: UIViewController {
 	
 	override func loadView() {
 		self.view = self.rootView
+		self.navigationItem.title = "Аниме"
 	}
 	
 	override func viewDidLoad() {
@@ -28,6 +29,11 @@ final class AnimePageVC: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		self.rootView.didLoad()
+		configureOpenFullImageButton()
+	}
+	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
 	}
 }
 
@@ -46,5 +52,17 @@ extension AnimePageVC: IAnimePageVC {
 	
 	func setDescription(_ text: String) {
 		self.rootView.setDescription(text)
+	}
+}
+
+private extension AnimePageVC {
+	func configureOpenFullImageButton() {
+		self.rootView.addOpenFullImageButtonTarget(self, action: #selector(openFullImage))
+	}
+	
+	@objc func openFullImage() {
+		let fullImageVC: IFullImageVC = FullImageVC()
+		fullImageVC.setImage(self.rootView.image)
+		present(fullImageVC, animated: true, completion: nil)
 	}
 }

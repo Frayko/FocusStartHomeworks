@@ -17,6 +17,12 @@ final class AppNavigationController: UINavigationController {
 
 private extension AppNavigationController {
 	func configureNavigationController() {
+		let appearance = UINavigationBarAppearance()
+		appearance.configureWithOpaqueBackground()
+		appearance.backgroundColor = .systemBackground
+		navigationBar.standardAppearance = appearance
+		navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
+		
 		self.navigationBar.backIndicatorImage = UIImage(systemName: "chevron.backward.circle.fill")
 		self.navigationBar.tintColor = .systemTeal
 		self.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "chevron.backward.circle.fill")

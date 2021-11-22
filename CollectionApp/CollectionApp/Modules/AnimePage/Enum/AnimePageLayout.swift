@@ -15,4 +15,14 @@ enum AnimePageLayout {
 	static let stackViewLeadingAnchor: CGFloat = 20.0
 	static let stackViewTrailingAnchor: CGFloat = -stackViewLeadingAnchor
 	static let stackViewBottomAnchor: CGFloat = -10.0
+	
+	static let imageViewCornerRadius: CGFloat = 10.0
+	
+	static let closeButtonTopAnchor: CGFloat = 10.0
+	static let closeButtonRightAnchor: CGFloat = -10.0
+	
+	static let scrollViewTopAnchor: CGFloat = 40.0
+	static let scrollViewLeadingAnchor: CGFloat = 10.0
+	static let scrollViewTrailingAnchor: CGFloat = -scrollViewLeadingAnchor
+	static let scrollViewBottomAnchor: CGFloat = -10.0
 }
