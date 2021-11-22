@@ -31,10 +31,6 @@ final class AnimePageVC: UIViewController {
 		self.rootView.didLoad()
 		configureOpenFullImageButton()
 	}
-	
-	override var preferredStatusBarStyle: UIStatusBarStyle {
-		return .lightContent
-	}
 }
 
 extension AnimePageVC: IAnimePageVC {
