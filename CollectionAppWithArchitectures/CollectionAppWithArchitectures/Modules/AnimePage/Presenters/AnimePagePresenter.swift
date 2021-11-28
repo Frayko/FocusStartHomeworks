@@ -12,15 +12,15 @@ protocol IAnimePagePresenter {
 }
 
 final class AnimePagePresenter {
-	private let model: AnimePageModel
-	private let appRouter: AppRouter
+	private let model: IAnimePageModel
+	private let appRouter: IAppRouter
 	private weak var view: IAnimePageView?
 	private weak var controller: IAnimePageVC?
 	private let animeIdentifier: UUID
 	
 	struct Dependecies {
-		let model: AnimePageModel
-		let appRouter: AppRouter
+		let model: IAnimePageModel
+		let appRouter: IAppRouter
 	}
 	
 	init(dependecies: Dependecies, animeIdentifier: UUID) {

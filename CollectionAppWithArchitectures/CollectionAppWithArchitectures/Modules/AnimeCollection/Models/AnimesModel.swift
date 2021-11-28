@@ -8,7 +8,13 @@
 import UIKit
 
 final class AnimesModel {
-	func filteredAnimes(with filter: String?=nil, limit: Int?=nil) -> [AnimeModel] {
+	private lazy var animes: [AnimeModel] = {
+		return generateAnimes()
+	}()
+}
+
+extension AnimesModel {
+	func filteredAnimes(with filter: String? = nil, limit: Int? = nil) -> [AnimeModel] {
 		let filtered = animes.filter { $0.contains(filter) }
 		if let limit = limit {
 			return Array(filtered.prefix(through: limit))
@@ -16,9 +22,6 @@ final class AnimesModel {
 			return filtered
 		}
 	}
-	private lazy var animes: [AnimeModel] = {
-		return generateAnimes()
-	}()
 }
 
 private extension AnimesModel {

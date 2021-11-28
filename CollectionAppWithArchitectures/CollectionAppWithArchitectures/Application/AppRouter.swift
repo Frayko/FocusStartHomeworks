@@ -7,10 +7,19 @@
 
 import UIKit
 
+protocol IAppRouter {
+	func setController(controller: UIViewController)
+	func setTargerController(controller: UIViewController)
+	func next()
+	func openModalView()
+}
+
 final class AppRouter {
 	private var controller: UIViewController?
 	private var targetController: UIViewController?
-	
+}
+
+extension AppRouter: IAppRouter {
 	func setController(controller: UIViewController) {
 		self.controller = controller
 	}

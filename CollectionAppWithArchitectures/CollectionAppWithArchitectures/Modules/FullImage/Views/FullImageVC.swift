@@ -16,7 +16,7 @@ final class FullImageVC: UIViewController {
 	private let rootView: IFullImageView = FullImageView(frame: UIScreen.main.bounds)
 	
 	struct Dependecies {
-		let viewModel: FullImageViewModel
+		let viewModel: IFullImageViewModel
 	}
 	
 	init(dependecies: Dependecies) {

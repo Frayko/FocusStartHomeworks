@@ -16,7 +16,7 @@ final class AnimeCollectionVC: UIViewController {
 		case main
 	}
 	
-	private let appRouter: AppRouter
+	private let appRouter: IAppRouter
 	private let animeCollectionView: IAnimeCollectionView
 	private let animesModel = AnimesModel()
 	private var dataSource: UICollectionViewDiffableDataSource<Section, AnimeModel>!
@@ -51,6 +51,10 @@ final class AnimeCollectionVC: UIViewController {
 	}
 }
 
+extension AnimeCollectionVC: IAnimeCollectionVC {
+	
+}
+
 extension AnimeCollectionVC: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		self.animeCollectionView.getAnimesCollectionView().deselectItem(at: indexPath, animated: true)
@@ -62,6 +66,12 @@ extension AnimeCollectionVC: UICollectionViewDelegate {
 		self.appRouter.setController(controller: self)
 		self.appRouter.setTargerController(controller: animePageVC)
 		self.appRouter.next()
+	}
+}
+
+extension AnimeCollectionVC: UISearchBarDelegate {
+	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		performQuery(with: searchText)
 	}
 }
 
@@ -87,14 +97,4 @@ private extension AnimeCollectionVC {
 		snapshot.appendItems(animes)
 		dataSource.apply(snapshot, animatingDifferences: true)
 	}
-}
-
-extension AnimeCollectionVC: UISearchBarDelegate {
-	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-		performQuery(with: searchText)
-	}
-}
-
-extension AnimeCollectionVC: IAnimeCollectionVC {
-	
 }
