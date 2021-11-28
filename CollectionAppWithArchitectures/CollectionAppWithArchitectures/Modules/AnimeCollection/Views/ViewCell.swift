@@ -10,7 +10,6 @@ import UIKit
 final class AnimeCell: UICollectionViewCell {
 	static let reuseIdentifier = "anime-cell-reuse-identifier"
 	
-	
 	private lazy var imageView: UIImageView = {
 		let imageView = UIImageView()
 		imageView.translatesAutoresizingMaskIntoConstraints = false

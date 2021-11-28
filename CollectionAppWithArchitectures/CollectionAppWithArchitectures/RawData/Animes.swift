@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class Animes {
+enum Animes {
 	private static var animes: [Anime] = {
 		let components = RawData.animeRawData.components(separatedBy: CharacterSet.newlines)
 		var animes = [Anime]()
