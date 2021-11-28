@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		970E9BC72752033A00E61032 /* AppNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E9BC62752033A00E61032 /* AppNavigationController.swift */; };
+		970E9C272752793F00E61032 /* Animes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E9C262752793F00E61032 /* Animes.swift */; };
+		970E9C31275381D200E61032 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E9C30275381D200E61032 /* AppRouter.swift */; };
+		9736FA542753A7DE00377CAD /* Anime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736FA532753A7DE00377CAD /* Anime.swift */; };
 		97C614B72750E37700CB1191 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C614B62750E37700CB1191 /* AppDelegate.swift */; };
 		97C614B92750E37700CB1191 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C614B82750E37700CB1191 /* SceneDelegate.swift */; };
 		97C614C02750E37800CB1191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C614BF2750E37800CB1191 /* Assets.xcassets */; };
@@ -14,6 +18,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		970E9BC62752033A00E61032 /* AppNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationController.swift; sourceTree = "<group>"; };
+		970E9C262752793F00E61032 /* Animes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animes.swift; sourceTree = "<group>"; };
+		970E9C30275381D200E61032 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		9736FA532753A7DE00377CAD /* Anime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anime.swift; sourceTree = "<group>"; };
 		97C614B32750E37700CB1191 /* CollectionAppWithArchitectures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionAppWithArchitectures.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97C614B62750E37700CB1191 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97C614B82750E37700CB1191 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,6 +41,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		970E9BC52752028A00E61032 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		970E9C192752729000E61032 /* RawData */ = {
+			isa = PBXGroup;
+			children = (
+				970E9C262752793F00E61032 /* Animes.swift */,
+				9736FA532753A7DE00377CAD /* Anime.swift */,
+			);
+			path = RawData;
+			sourceTree = "<group>";
+		};
 		97C614AA2750E37700CB1191 = {
 			isa = PBXGroup;
 			children = (
@@ -52,7 +76,9 @@
 		97C614B52750E37700CB1191 /* CollectionAppWithArchitectures */ = {
 			isa = PBXGroup;
 			children = (
+				970E9C192752729000E61032 /* RawData */,
 				97C614CA2750E3A400CB1191 /* Application */,
+				970E9BC52752028A00E61032 /* Modules */,
 				97C614CB2750E3AE00CB1191 /* Resourses */,
 			);
 			path = CollectionAppWithArchitectures;
@@ -63,6 +89,8 @@
 			children = (
 				97C614B62750E37700CB1191 /* AppDelegate.swift */,
 				97C614B82750E37700CB1191 /* SceneDelegate.swift */,
+				970E9BC62752033A00E61032 /* AppNavigationController.swift */,
+				970E9C30275381D200E61032 /* AppRouter.swift */,
 				97C614C12750E37800CB1191 /* LaunchScreen.storyboard */,
 				97C614C42750E37800CB1191 /* Info.plist */,
 			);
@@ -147,7 +175,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				970E9BC72752033A00E61032 /* AppNavigationController.swift in Sources */,
 				97C614B72750E37700CB1191 /* AppDelegate.swift in Sources */,
+				9736FA542753A7DE00377CAD /* Anime.swift in Sources */,
+				970E9C31275381D200E61032 /* AppRouter.swift in Sources */,
+				970E9C272752793F00E61032 /* Animes.swift in Sources */,
 				97C614B92750E37700CB1191 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
