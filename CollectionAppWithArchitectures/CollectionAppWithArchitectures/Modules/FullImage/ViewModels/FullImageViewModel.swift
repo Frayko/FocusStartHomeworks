@@ -16,17 +16,14 @@ protocol IFullImageViewModel {
 final class FullImageViewModel {
 	private var imageName: Observable<String> = Observable<String>("none")
 	private let model: IFullImageModel
-	private let appRouter: AppRouter
 	private let animeIdentifier: UUID
 
 	struct Dependencies {
 		let model: IFullImageModel
-		let router: AppRouter
 	}
 	
 	init(dependencies: Dependencies, animeIdentifier: UUID) {
 		self.model = dependencies.model
-		self.appRouter = dependencies.router
 		self.animeIdentifier = animeIdentifier
 	}
 }

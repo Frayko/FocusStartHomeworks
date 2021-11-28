@@ -9,9 +9,8 @@ import UIKit
 
 enum FullImageAssembly {
 	static func build(animeIdentifier: UUID) -> UIViewController {
-		let appRouter = AppRouter()
 		let model = FullImageModel()
-		let viewModel = FullImageViewModel(dependencies: .init(model: model, router: appRouter),
+		let viewModel = FullImageViewModel(dependencies: .init(model: model),
 										   animeIdentifier: animeIdentifier)
 		let controller = FullImageVC(dependecies: .init(viewModel: viewModel))
 		return controller
