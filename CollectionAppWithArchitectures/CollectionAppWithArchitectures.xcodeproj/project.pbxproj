@@ -103,8 +103,8 @@
 			children = (
 				9736FA702754014700377CAD /* Metrics */,
 				9736FA722754014700377CAD /* Models */,
-				9736FA752754014700377CAD /* Controllers */,
 				9736FA772754014700377CAD /* Views */,
+				9736FA752754014700377CAD /* Controllers */,
 			);
 			path = AnimeCollection;
 			sourceTree = "<group>";
@@ -149,8 +149,8 @@
 				9736FAA8275402C300377CAD /* Metrics */,
 				9736FAAA275402C300377CAD /* Assembly */,
 				9736FAAC275402C300377CAD /* Models */,
-				9736FAAE275402C300377CAD /* Presenters */,
 				9736FAB0275402C300377CAD /* Views */,
+				9736FAAE275402C300377CAD /* Presenters */,
 			);
 			path = AnimePage;
 			sourceTree = "<group>";
@@ -200,11 +200,10 @@
 			isa = PBXGroup;
 			children = (
 				9736FABA2754030A00377CAD /* Metrics */,
-				9736FABC2754030A00377CAD /* ViewModels */,
 				9736FABF2754030A00377CAD /* Assembly */,
 				9736FAC12754030A00377CAD /* Models */,
-				9736FAC32754030A00377CAD /* Controllers */,
 				9736FAC52754030A00377CAD /* Views */,
+				9736FABC2754030A00377CAD /* ViewModels */,
 			);
 			path = FullImage;
 			sourceTree = "<group>";
@@ -242,18 +241,11 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		9736FAC32754030A00377CAD /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				9736FAC42754030A00377CAD /* FullImageVC.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 		9736FAC52754030A00377CAD /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				9736FAC62754030A00377CAD /* FullImageView.swift */,
+				9736FAC42754030A00377CAD /* FullImageVC.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
