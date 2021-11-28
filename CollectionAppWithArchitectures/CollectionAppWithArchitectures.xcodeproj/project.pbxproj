@@ -23,6 +23,13 @@
 		9736FAB6275402C300377CAD /* AnimePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736FAAF275402C300377CAD /* AnimePagePresenter.swift */; };
 		9736FAB7275402C300377CAD /* AnimePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736FAB1275402C300377CAD /* AnimePageVC.swift */; };
 		9736FAB8275402C300377CAD /* AnimePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736FAB2275402C300377CAD /* AnimePageView.swift */; };
+		9736FAC72754030A00377CAD /* FullImageLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736FABB2754030A00377CAD /* FullImageLayout.swift */; };
+		9736FAC82754030A00377CAD /* FullImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736FABD2754030A00377CAD /* FullImageViewModel.swift */; };
+		9736FAC92754030A00377CAD /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736FABE2754030A00377CAD /* Observable.swift */; };
+		9736FACA2754030A00377CAD /* FullImageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736FAC02754030A00377CAD /* FullImageAssembly.swift */; };
+		9736FACB2754030A00377CAD /* FullImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736FAC22754030A00377CAD /* FullImageModel.swift */; };
+		9736FACC2754030A00377CAD /* FullImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736FAC42754030A00377CAD /* FullImageVC.swift */; };
+		9736FACD2754030A00377CAD /* FullImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736FAC62754030A00377CAD /* FullImageView.swift */; };
 		97C614B72750E37700CB1191 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C614B62750E37700CB1191 /* AppDelegate.swift */; };
 		97C614B92750E37700CB1191 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C614B82750E37700CB1191 /* SceneDelegate.swift */; };
 		97C614C02750E37800CB1191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C614BF2750E37800CB1191 /* Assets.xcassets */; };
@@ -46,6 +53,13 @@
 		9736FAAF275402C300377CAD /* AnimePagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimePagePresenter.swift; sourceTree = "<group>"; };
 		9736FAB1275402C300377CAD /* AnimePageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimePageVC.swift; sourceTree = "<group>"; };
 		9736FAB2275402C300377CAD /* AnimePageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimePageView.swift; sourceTree = "<group>"; };
+		9736FABB2754030A00377CAD /* FullImageLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullImageLayout.swift; sourceTree = "<group>"; };
+		9736FABD2754030A00377CAD /* FullImageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullImageViewModel.swift; sourceTree = "<group>"; };
+		9736FABE2754030A00377CAD /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		9736FAC02754030A00377CAD /* FullImageAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullImageAssembly.swift; sourceTree = "<group>"; };
+		9736FAC22754030A00377CAD /* FullImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullImageModel.swift; sourceTree = "<group>"; };
+		9736FAC42754030A00377CAD /* FullImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullImageVC.swift; sourceTree = "<group>"; };
+		9736FAC62754030A00377CAD /* FullImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullImageView.swift; sourceTree = "<group>"; };
 		97C614B32750E37700CB1191 /* CollectionAppWithArchitectures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionAppWithArchitectures.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97C614B62750E37700CB1191 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97C614B82750E37700CB1191 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +84,7 @@
 			children = (
 				9736FA6F2754014700377CAD /* AnimeCollection */,
 				9736FAA7275402C300377CAD /* AnimePage */,
+				9736FAB92754030A00377CAD /* FullImage */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -177,6 +192,68 @@
 			children = (
 				9736FAB1275402C300377CAD /* AnimePageVC.swift */,
 				9736FAB2275402C300377CAD /* AnimePageView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9736FAB92754030A00377CAD /* FullImage */ = {
+			isa = PBXGroup;
+			children = (
+				9736FABA2754030A00377CAD /* Metrics */,
+				9736FABC2754030A00377CAD /* ViewModels */,
+				9736FABF2754030A00377CAD /* Assembly */,
+				9736FAC12754030A00377CAD /* Models */,
+				9736FAC32754030A00377CAD /* Controllers */,
+				9736FAC52754030A00377CAD /* Views */,
+			);
+			path = FullImage;
+			sourceTree = "<group>";
+		};
+		9736FABA2754030A00377CAD /* Metrics */ = {
+			isa = PBXGroup;
+			children = (
+				9736FABB2754030A00377CAD /* FullImageLayout.swift */,
+			);
+			path = Metrics;
+			sourceTree = "<group>";
+		};
+		9736FABC2754030A00377CAD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				9736FABD2754030A00377CAD /* FullImageViewModel.swift */,
+				9736FABE2754030A00377CAD /* Observable.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		9736FABF2754030A00377CAD /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				9736FAC02754030A00377CAD /* FullImageAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		9736FAC12754030A00377CAD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9736FAC22754030A00377CAD /* FullImageModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9736FAC32754030A00377CAD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9736FAC42754030A00377CAD /* FullImageVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9736FAC52754030A00377CAD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9736FAC62754030A00377CAD /* FullImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -302,20 +379,27 @@
 				9736FAB7275402C300377CAD /* AnimePageVC.swift in Sources */,
 				9736FA992754014700377CAD /* ViewCell.swift in Sources */,
 				970E9BC72752033A00E61032 /* AppNavigationController.swift in Sources */,
+				9736FACC2754030A00377CAD /* FullImageVC.swift in Sources */,
 				9736FAB6275402C300377CAD /* AnimePagePresenter.swift in Sources */,
 				97C614B72750E37700CB1191 /* AppDelegate.swift in Sources */,
+				9736FACB2754030A00377CAD /* FullImageModel.swift in Sources */,
 				9736FAB5275402C300377CAD /* AnimePageModel.swift in Sources */,
 				9736FAB4275402C300377CAD /* AnimePageAssembly.swift in Sources */,
 				9736FA952754014700377CAD /* AnimesModel.swift in Sources */,
 				9736FA542753A7DE00377CAD /* Anime.swift in Sources */,
 				970E9C31275381D200E61032 /* AppRouter.swift in Sources */,
+				9736FACA2754030A00377CAD /* FullImageAssembly.swift in Sources */,
+				9736FAC92754030A00377CAD /* Observable.swift in Sources */,
 				9736FA972754014700377CAD /* AnimeCollectionVC.swift in Sources */,
 				9736FA942754014700377CAD /* AnimeCollectionLayout.swift in Sources */,
 				970E9C272752793F00E61032 /* Animes.swift in Sources */,
+				9736FAC82754030A00377CAD /* FullImageViewModel.swift in Sources */,
+				9736FACD2754030A00377CAD /* FullImageView.swift in Sources */,
 				9736FA962754014700377CAD /* AnimeModel.swift in Sources */,
 				9736FA982754014700377CAD /* AnimeCollectionView.swift in Sources */,
 				9736FAB3275402C300377CAD /* AnimePageLayout.swift in Sources */,
 				9736FAB8275402C300377CAD /* AnimePageView.swift in Sources */,
+				9736FAC72754030A00377CAD /* FullImageLayout.swift in Sources */,
 				97C614B92750E37700CB1191 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
