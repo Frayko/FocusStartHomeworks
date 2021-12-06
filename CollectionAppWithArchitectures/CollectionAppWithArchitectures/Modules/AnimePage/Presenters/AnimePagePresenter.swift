@@ -45,13 +45,14 @@ private extension AnimePagePresenter {
 	func setData() {
 		let modelViewAnime = self.model.getAnime()
 		
-		self.view?.setImage(named: modelViewAnime.imageName)
-		self.view?.setTitle(modelViewAnime.title)
-		self.view?.setTags(modelViewAnime.tags)
-		self.view?.setDescription(modelViewAnime.description)
+		self.view?.setData(modelViewAnime)
 	}
 	
 	func onTouched() {
+		self.createModalFullImageView()
+	}
+	
+	func createModalFullImageView() {
 		let fullImageVC = FullImageAssembly.build(animeIdentifier: self.animeIdentifier)
 		
 		guard let controller = self.controller else {

@@ -48,8 +48,8 @@ extension AnimeCollectionView: IAnimeCollectionView {
 	}
 	
 	func didLoad() {
-		configUI()
-		configView()
+		self.configUI()
+		self.configView()
 	}
 }
 

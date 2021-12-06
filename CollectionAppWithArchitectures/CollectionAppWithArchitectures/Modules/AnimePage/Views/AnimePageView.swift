@@ -10,10 +10,7 @@ import UIKit
 protocol IAnimePageView: UIView {
 	func didLoad()
 	func setOnTouchedHandler(_ handler: @escaping (() -> Void))
-	func setImage(named: String)
-	func setTitle(_ text: String)
-	func setTags(_ tags: [String])
-	func setDescription(_ text: String)
+	func setData(_ data: Anime)
 }
 
 final class AnimePageView: UIView {
@@ -80,10 +77,10 @@ final class AnimePageView: UIView {
 	}()
 	
 	private lazy var stackView: UIStackView = {
-		let vStack = UIStackView(arrangedSubviews: [titleLabel,
-													tagsLabel,
-													openFullImageButton,
-													descriptionTextView])
+		let vStack = UIStackView(arrangedSubviews: [self.titleLabel,
+													self.tagsLabel,
+													self.openFullImageButton,
+													self.descriptionTextView])
 		
 		vStack.axis = .vertical
 		vStack.spacing = AnimePageLayout.stackViewSpacing
@@ -115,31 +112,22 @@ extension AnimePageView: IAnimePageView {
 	}
 	
 	func didLoad() {
-		configureUI()
-		configureView()
-		configureScrollView()
+		self.configureUI()
+		self.configureView()
+		self.configureScrollView()
 	}
 	
-	func setImage(named: String) {
-		self.imageView.image = UIImage(named: named)
-	}
-	
-	func setTitle(_ text: String) {
-		self.titleLabel.text = text
-	}
-	
-	func setTags(_ tags: [String]) {
+	func setData(_ data: Anime) {
+		self.imageView.image = UIImage(named: data.imageName)
+		self.titleLabel.text = data.title
 		self.tagsLabel.text = ""
-		for i in 0 ..< tags.count {
-			self.tagsLabel.text?.append(contentsOf: tags[i])
-			if i != tags.count - 1 {
+		for i in 0 ..< data.tags.count {
+			self.tagsLabel.text?.append(contentsOf: data.tags[i])
+			if i != data.tags.count - 1 {
 				self.tagsLabel.text?.append(contentsOf: ", ")
 			}
 		}
-	}
-	
-	func setDescription(_ text: String) {
-		self.descriptionTextView.text = text
+		self.descriptionTextView.text = data.description
 	}
 }
 
@@ -178,16 +166,16 @@ private extension AnimePageView {
 	
 	func configureScrollView() {
 		let safeArea = self.safeAreaLayoutGuide
-		self.addSubview(scrollView)
+		self.addSubview(self.scrollView)
 
 		NSLayoutConstraint.activate([
-			scrollView.frameLayoutGuide.topAnchor.constraint(equalTo: safeArea.topAnchor),
-			scrollView.frameLayoutGuide.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-			scrollView.frameLayoutGuide.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-			scrollView.frameLayoutGuide.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-			scrollView.contentLayoutGuide.topAnchor.constraint(equalTo: scrollView.frameLayoutGuide.topAnchor),
-			scrollView.contentLayoutGuide.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor),
-			scrollView.contentLayoutGuide.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor)
+			self.scrollView.frameLayoutGuide.topAnchor.constraint(equalTo: safeArea.topAnchor),
+			self.scrollView.frameLayoutGuide.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+			self.scrollView.frameLayoutGuide.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+			self.scrollView.frameLayoutGuide.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+			self.scrollView.contentLayoutGuide.topAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.topAnchor),
+			self.scrollView.contentLayoutGuide.leadingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.leadingAnchor),
+			self.scrollView.contentLayoutGuide.trailingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.trailingAnchor)
 		])
 	}
 }

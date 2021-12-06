@@ -30,7 +30,7 @@ final class FullImageViewModel {
 
 extension FullImageViewModel: IFullImageViewModel {
 	func getImageName() -> Observable<String> {
-		imageName
+		self.imageName
 	}
 	
 	func updateModel() {

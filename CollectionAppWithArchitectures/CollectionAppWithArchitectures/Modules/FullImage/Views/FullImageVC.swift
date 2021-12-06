@@ -31,7 +31,7 @@ final class FullImageVC: UIViewController {
 	override func loadView() {
 		self.view = self.rootView
 		self.viewModel.loadView()
-		setHandlers()
+		self.setHandlers()
 	}
 	
 	override func viewDidLoad() {
@@ -47,7 +47,7 @@ final class FullImageVC: UIViewController {
 	}
 	
 	override func viewDidLayoutSubviews() {
-		resizeImage()
+		self.resizeImage()
 	}
 }
 
@@ -63,15 +63,15 @@ private extension FullImageVC {
 	}
 	
 	func resizeImage() {
-		let image = self.rootView.image
+		let imageSize = self.rootView.getImageSize()
 		
-		let height = image.size.height
+		let height = imageSize.height
 		let width: CGFloat
-		if image.size.width == 0 {
+		if imageSize.width == 0 {
 			width = 1
 		}
 		else {
-			width = image.size.width
+			width = imageSize.width
 		}
 		let ratio = height / width
 		

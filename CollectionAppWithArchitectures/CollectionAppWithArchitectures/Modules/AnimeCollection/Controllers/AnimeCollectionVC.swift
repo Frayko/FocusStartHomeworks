@@ -22,8 +22,8 @@ final class AnimeCollectionVC: UIViewController {
 	private var dataSource: UICollectionViewDiffableDataSource<Section, AnimeModel>!
 	
 	init() {
-		appRouter = AppRouter()
-		animeCollectionView = AnimeCollectionView()
+		self.appRouter = AppRouter()
+		self.animeCollectionView = AnimeCollectionView()
 		super.init(nibName: nil, bundle: nil)
 	}
 	
@@ -33,16 +33,16 @@ final class AnimeCollectionVC: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		navigationItem.title = "Каталог аниме"
-		navigationItem.backButtonDisplayMode = .minimal
-		self.view = animeCollectionView
-		animeCollectionView.didLoad()
+		self.navigationItem.title = "Каталог аниме"
+		self.navigationItem.backButtonDisplayMode = .minimal
+		self.view = self.animeCollectionView
+		self.animeCollectionView.didLoad()
 		
-		animeCollectionView.getSearchBar().delegate = self
-		animeCollectionView.getAnimesCollectionView().delegate = self
+		self.animeCollectionView.getSearchBar().delegate = self
+		self.animeCollectionView.getAnimesCollectionView().delegate = self
 			
-		configureDataSource()
-		performQuery(with: nil)
+		self.configureDataSource()
+		self.performQuery(with: nil)
 	}
 	
 	override func loadView() {
@@ -62,20 +62,24 @@ extension AnimeCollectionVC: UICollectionViewDelegate {
 			return
 		}
 		
-		let animePageVC = AnimePageAssembly.build(animeIdentifier: anime.identifier)
-		self.appRouter.setController(controller: self)
-		self.appRouter.setTargerController(controller: animePageVC)
-		self.appRouter.next()
+		self.createAnimePage(anime: anime)
 	}
 }
 
 extension AnimeCollectionVC: UISearchBarDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-		performQuery(with: searchText)
+		self.performQuery(with: searchText)
 	}
 }
 
 private extension AnimeCollectionVC {
+	func createAnimePage(anime: AnimeModel) {
+		let animePageVC = AnimePageAssembly.build(animeIdentifier: anime.identifier)
+		self.appRouter.setController(controller: self)
+		self.appRouter.setTargerController(controller: animePageVC)
+		self.appRouter.next()
+	}
+	
 	func configureDataSource() {
 		let cellRegistration = UICollectionView.CellRegistration
 		<AnimeCell, AnimeModel> { (cell, indexPath, anime) in

@@ -31,7 +31,7 @@ final class AnimeCell: UICollectionViewCell {
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		configureView()
+		self.configureView()
 	}
 	required init?(coder: NSCoder) {
 		fatalError("not implemented")
@@ -50,7 +50,7 @@ extension AnimeCell {
 
 private extension AnimeCell {
 	func configureView() {
-		contentView.addSubview(self.imageView)
+		self.contentView.addSubview(self.imageView)
 		
 		NSLayoutConstraint.activate([
 			self.imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -61,7 +61,7 @@ private extension AnimeCell {
 			self.imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
 		])
 		
-		contentView.addSubview(self.title)
+		self.contentView.addSubview(self.title)
 		
 		NSLayoutConstraint.activate([
 			self.title.topAnchor.constraint(equalTo: self.imageView.bottomAnchor,

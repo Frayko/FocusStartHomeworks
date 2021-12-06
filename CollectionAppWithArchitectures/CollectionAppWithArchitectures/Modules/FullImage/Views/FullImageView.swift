@@ -8,11 +8,10 @@
 import UIKit
 
 protocol IFullImageView: UIView {
-	var image: UIImage { get }
+	func getImageSize() -> CGSize
 	func didLoad()
 	func setOnTouchedHandler(_ handler: @escaping (() -> Void))
 	func setImage(named: String)
-	func addCloseButtonTarget(_ target: UIViewController, action: Selector)
 	func resizeImage(widthConstant: CGFloat, heightConstant: CGFloat)
 }
 
@@ -58,23 +57,19 @@ final class FullImageView: UIView {
 }
 
 extension FullImageView: IFullImageView {
+	func getImageSize() -> CGSize {
+		self.imageView.image?.size ?? CGSize(width: 1, height: 0)
+	}
+	
 	func setOnTouchedHandler(_ handler: @escaping (() -> Void)) {
 		self.onTouchedHandler = handler
 	}
 	
-	var image: UIImage {
-		self.imageView.image ?? UIImage()
-	}
-	
-	func addCloseButtonTarget(_ target: UIViewController, action: Selector) {
-		closeButton.addTarget(target, action: action, for: .touchUpInside)
-	}
-	
 	func didLoad() {
-		configureUI()
-		configureView()
-		configureScrollView()
-		configureCloseButtonView()
+		self.configureUI()
+		self.configureView()
+		self.configureScrollView()
+		self.configureCloseButtonView()
 	}
 	
 	func setImage(named: String) {
@@ -87,8 +82,8 @@ extension FullImageView: IFullImageView {
 			self.imageViewHeightConstraint
 		])
 		
-		imageViewWidthConstraint = imageView.widthAnchor.constraint(equalToConstant: widthConstant)
-		imageViewHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: heightConstant)
+		self.imageViewWidthConstraint = self.imageView.widthAnchor.constraint(equalToConstant: widthConstant)
+		self.imageViewHeightConstraint = self.imageView.heightAnchor.constraint(equalToConstant: heightConstant)
 		
 		NSLayoutConstraint.activate([
 			self.imageViewWidthConstraint,
@@ -124,13 +119,13 @@ private extension FullImageView {
 		self.addSubview(self.scrollView)
 
 		NSLayoutConstraint.activate([
-			scrollView.frameLayoutGuide.topAnchor.constraint(equalTo: safeArea.topAnchor),
-			scrollView.frameLayoutGuide.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-			scrollView.frameLayoutGuide.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-			scrollView.frameLayoutGuide.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-			scrollView.contentLayoutGuide.topAnchor.constraint(equalTo: scrollView.frameLayoutGuide.topAnchor),
-			scrollView.contentLayoutGuide.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor),
-			scrollView.contentLayoutGuide.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor)
+			self.scrollView.frameLayoutGuide.topAnchor.constraint(equalTo: safeArea.topAnchor),
+			self.scrollView.frameLayoutGuide.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+			self.scrollView.frameLayoutGuide.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+			self.scrollView.frameLayoutGuide.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+			self.scrollView.contentLayoutGuide.topAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.topAnchor),
+			self.scrollView.contentLayoutGuide.leadingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.leadingAnchor),
+			self.scrollView.contentLayoutGuide.trailingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.trailingAnchor)
 		])
 	}
 	
