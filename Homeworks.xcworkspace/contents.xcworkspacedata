@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:CarsShop/CarsShop.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:CollectionAppWithArchitectures/CollectionAppWithArchitectures.xcodeproj">
    </FileRef>
    <FileRef
