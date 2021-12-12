@@ -25,17 +25,17 @@ final class ListCarsViewCell: UITableViewCell {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		self.imageView?.frame = .init(x: ListCarsLayout.cellImageViewX,
-									  y: self.bounds.height / 5,
+									  y: self.bounds.height / ListCarsLayout.cellContentHeight,
 									  width: ListCarsLayout.cellImageViewSize,
 									  height: ListCarsLayout.cellImageViewSize)
 		
 		self.textLabel?.frame = .init(x: ListCarsLayout.cellTitleTextX,
-									  y: self.bounds.height / 5,
+									  y: self.bounds.height / ListCarsLayout.cellContentHeight,
 									  width: self.bounds.width / ListCarsLayout.cellTitleTextWidth,
 									  height: ListCarsLayout.cellTitleTextHeight)
 		
-		self.detailTextLabel?.frame = .init(x: self.bounds.width / 1.2,
-											y: self.bounds.height / 5,
+		self.detailTextLabel?.frame = .init(x: self.bounds.width / ListCarsLayout.cellDetailTextX,
+											y: self.bounds.height / ListCarsLayout.cellContentHeight,
 											width: ListCarsLayout.cellDetailTextWidth,
 											height: ListCarsLayout.cellDetailTextHeight)
 	}

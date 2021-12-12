@@ -8,7 +8,7 @@
 import UIKit
 
 protocol IListCarsVC: UIViewController {
-	
+	func pushDetailCar(id: UUID)
 }
 
 final class ListCarsVC: UIViewController {
@@ -37,5 +37,8 @@ final class ListCarsVC: UIViewController {
 }
 
 extension ListCarsVC: IListCarsVC {
-	
+	func pushDetailCar(id: UUID) {
+		let detailCarVC = DetailCarAssembly.build(id: id)
+		self.navigationController?.pushViewController(detailCarVC, animated: true)
+	}
 }

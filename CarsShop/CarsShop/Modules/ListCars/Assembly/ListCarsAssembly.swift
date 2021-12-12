@@ -9,11 +9,12 @@ import UIKit
 
 enum ListCarsAssembly {
 	static func build() -> UIViewController {
-		//let appRouter = AppRouter()
+		let router = ListCarsRouter()
 		let model = ListCarsModel()
-		let dataHandler = ListCarsDataHandler(model: model)
+		let dataHandler = ListCarsDataHandler()
 		let presenter = ListCarsPresenter(dependecies: .init(model: model,
-															 dataHandler: dataHandler))
+															 dataHandler: dataHandler,
+															 router: router))
 		let controller = ListCarsVC(presenter: presenter)
 		return controller
 	}

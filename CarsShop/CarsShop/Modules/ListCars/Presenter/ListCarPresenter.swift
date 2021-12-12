@@ -13,7 +13,7 @@ protocol IListCarsPresenter {
 
 final class ListCarsPresenter {
 	private let model: IListCarsModel
-	//private let router: IListCarsRouter
+	private let router: IListCarsRouter
 	private let dataHandler: IListCarsDataHandler
 	private weak var view: IListCarsView?
 	private weak var controller: IListCarsVC?
@@ -22,14 +22,14 @@ final class ListCarsPresenter {
 	struct Dependecies {
 		let model: IListCarsModel
 		let dataHandler: IListCarsDataHandler
-		//let router: IListCarsRouter
+		let router: IListCarsRouter
 	}
 	
 	init(dependecies: Dependecies) {
 		self.model = dependecies.model
 		self.dataHandler = dependecies.dataHandler
 		self.carsInstance = Cars.shared
-		//self.router = dependecies.router
+		self.router = dependecies.router
 	}
 }
 
@@ -48,17 +48,18 @@ extension ListCarsPresenter: IListCarsPresenter {
 
 private extension ListCarsPresenter {
 	func setData() {
+		self.dataHandler.setModel(self.model)
 		self.dataHandler.setCars(with: carsInstance.getCars())
 		self.view?.reloadView()
-	}
-	
-	func onTouched(id: UUID) {
-		print("poop", id)
 	}
 
 	func setHandlers() {
 		self.dataHandler.setOnTouchedButtonHandler { [weak self] id in
-			self?.onTouched(id: id)
+			self?.router.goToDetailCar(id: id)
+		}
+		
+		self.router.setPushControllerHandler { [weak self] id in
+			self?.controller?.pushDetailCar(id: id)
 		}
 	}
 }

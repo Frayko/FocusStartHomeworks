@@ -8,6 +8,7 @@
 import UIKit
 
 protocol IListCarsDataHandler: UITableViewDelegate, UITableViewDataSource {
+	func setModel(_ model: IListCarsModel)
 	func setCars(with cars: [Car])
 	func setOnTouchedButtonHandler(_ handler: @escaping ((_ id: UUID) -> Void))
 }
@@ -16,13 +17,13 @@ final class ListCarsDataHandler: NSObject {
 	private var cars: [Car]?
 	private weak var model: IListCarsModel?
 	private var onTouchedButtonHandler: ((_ id: UUID) -> Void)?
-	
-	init(model: IListCarsModel) {
-		self.model = model
-	}
 }
 
 extension ListCarsDataHandler: IListCarsDataHandler {
+	func setModel(_ model: IListCarsModel) {
+		self.model = model
+	}
+	
 	func setCars(with cars: [Car]) {
 		self.cars = cars
 	}

@@ -24,6 +24,8 @@
 		973D5B52276227900092CB1C /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973D5B51276227900092CB1C /* CarModel.swift */; };
 		973D5B5427625FDD0092CB1C /* ListCarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973D5B5327625FDD0092CB1C /* ListCarPresenter.swift */; };
 		973D5B5627625FEA0092CB1C /* ListCarsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973D5B5527625FEA0092CB1C /* ListCarsAssembly.swift */; };
+		9759B97E2765FD55004A4831 /* DetailCarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9759B97D2765FD55004A4831 /* DetailCarAssembly.swift */; };
+		9759B9802765FD9C004A4831 /* ListCarsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9759B97F2765FD9C004A4831 /* ListCarsRouter.swift */; };
 		97DB73D72764FC1000715021 /* ListCarsDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DB73D62764FC1000715021 /* ListCarsDataHandler.swift */; };
 		97DB73D92765116A00715021 /* ListCarsColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DB73D82765116A00715021 /* ListCarsColors.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +50,8 @@
 		973D5B51276227900092CB1C /* CarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModel.swift; sourceTree = "<group>"; };
 		973D5B5327625FDD0092CB1C /* ListCarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCarPresenter.swift; sourceTree = "<group>"; };
 		973D5B5527625FEA0092CB1C /* ListCarsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCarsAssembly.swift; sourceTree = "<group>"; };
+		9759B97D2765FD55004A4831 /* DetailCarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCarAssembly.swift; sourceTree = "<group>"; };
+		9759B97F2765FD9C004A4831 /* ListCarsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCarsRouter.swift; sourceTree = "<group>"; };
 		97DB73D62764FC1000715021 /* ListCarsDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCarsDataHandler.swift; sourceTree = "<group>"; };
 		97DB73D82765116A00715021 /* ListCarsColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCarsColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +117,7 @@
 		973D5B35276214F60092CB1C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9759B9752765FCC4004A4831 /* DetailCar */,
 				973D5B36276215020092CB1C /* ListCars */,
 			);
 			path = Modules;
@@ -179,6 +184,7 @@
 		973D5B3D276215420092CB1C /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				9759B97F2765FD9C004A4831 /* ListCarsRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -192,6 +198,70 @@
 				973D5B472762211E0092CB1C /* RawCars.swift */,
 			);
 			path = RawData;
+			sourceTree = "<group>";
+		};
+		9759B9752765FCC4004A4831 /* DetailCar */ = {
+			isa = PBXGroup;
+			children = (
+				9759B97C2765FD13004A4831 /* DataHandler */,
+				9759B97B2765FD0D004A4831 /* Metrics */,
+				9759B97A2765FD00004A4831 /* Router */,
+				9759B9792765FCF8004A4831 /* Assembly */,
+				9759B9782765FCF2004A4831 /* Presenter */,
+				9759B9772765FCE0004A4831 /* Models */,
+				9759B9762765FCD8004A4831 /* Views */,
+			);
+			path = DetailCar;
+			sourceTree = "<group>";
+		};
+		9759B9762765FCD8004A4831 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9759B9772765FCE0004A4831 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9759B9782765FCF2004A4831 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9759B9792765FCF8004A4831 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				9759B97D2765FD55004A4831 /* DetailCarAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		9759B97A2765FD00004A4831 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		9759B97B2765FD0D004A4831 /* Metrics */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Metrics;
+			sourceTree = "<group>";
+		};
+		9759B97C2765FD13004A4831 /* DataHandler */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataHandler;
 			sourceTree = "<group>";
 		};
 		97DB73D52764FBF500715021 /* DataHandler */ = {
@@ -277,6 +347,7 @@
 				973D5B1E276213F40092CB1C /* AppDelegate.swift in Sources */,
 				973D5B44276217390092CB1C /* CarBody.swift in Sources */,
 				973D5B4A2762265A0092CB1C /* ListCarsController.swift in Sources */,
+				9759B97E2765FD55004A4831 /* DetailCarAssembly.swift in Sources */,
 				973D5B482762211E0092CB1C /* RawCars.swift in Sources */,
 				973D5B5427625FDD0092CB1C /* ListCarPresenter.swift in Sources */,
 				973D5B42276216DE0092CB1C /* Car.swift in Sources */,
@@ -284,6 +355,7 @@
 				973D5B3F276215F60092CB1C /* ListCarsLayout.swift in Sources */,
 				973D5B50276227080092CB1C /* ListCarsModel.swift in Sources */,
 				973D5B4C276226850092CB1C /* ListCarsView.swift in Sources */,
+				9759B9802765FD9C004A4831 /* ListCarsRouter.swift in Sources */,
 				973D5B5627625FEA0092CB1C /* ListCarsAssembly.swift in Sources */,
 				973D5B52276227900092CB1C /* CarModel.swift in Sources */,
 				973D5B20276213F40092CB1C /* SceneDelegate.swift in Sources */,
