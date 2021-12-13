@@ -26,6 +26,15 @@
 		973D5B5627625FEA0092CB1C /* ListCarsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973D5B5527625FEA0092CB1C /* ListCarsAssembly.swift */; };
 		9759B97E2765FD55004A4831 /* DetailCarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9759B97D2765FD55004A4831 /* DetailCarAssembly.swift */; };
 		9759B9802765FD9C004A4831 /* ListCarsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9759B97F2765FD9C004A4831 /* ListCarsRouter.swift */; };
+		97939E6D276641720075574B /* DetailCarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97939E6C276641720075574B /* DetailCarModel.swift */; };
+		97939E6F276657F60075574B /* DetailCarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97939E6E276657F60075574B /* DetailCarLayout.swift */; };
+		97939E71276658170075574B /* DetailCarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97939E70276658170075574B /* DetailCarController.swift */; };
+		97939E732766581F0075574B /* DetailCarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97939E722766581F0075574B /* DetailCarView.swift */; };
+		97939E75276658270075574B /* DetailCarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97939E74276658270075574B /* DetailCarViewCell.swift */; };
+		97939E77276658330075574B /* DetailCarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97939E76276658330075574B /* DetailCarPresenter.swift */; };
+		97939E792766583D0075574B /* DetailCarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97939E782766583D0075574B /* DetailCarRouter.swift */; };
+		97939E7B276658480075574B /* DetailCarDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97939E7A276658480075574B /* DetailCarDataHandler.swift */; };
+		97939E7D276790150075574B /* DetailCarColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97939E7C276790150075574B /* DetailCarColors.swift */; };
 		97DB73D72764FC1000715021 /* ListCarsDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DB73D62764FC1000715021 /* ListCarsDataHandler.swift */; };
 		97DB73D92765116A00715021 /* ListCarsColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DB73D82765116A00715021 /* ListCarsColors.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +61,15 @@
 		973D5B5527625FEA0092CB1C /* ListCarsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCarsAssembly.swift; sourceTree = "<group>"; };
 		9759B97D2765FD55004A4831 /* DetailCarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCarAssembly.swift; sourceTree = "<group>"; };
 		9759B97F2765FD9C004A4831 /* ListCarsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCarsRouter.swift; sourceTree = "<group>"; };
+		97939E6C276641720075574B /* DetailCarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCarModel.swift; sourceTree = "<group>"; };
+		97939E6E276657F60075574B /* DetailCarLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCarLayout.swift; sourceTree = "<group>"; };
+		97939E70276658170075574B /* DetailCarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCarController.swift; sourceTree = "<group>"; };
+		97939E722766581F0075574B /* DetailCarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCarView.swift; sourceTree = "<group>"; };
+		97939E74276658270075574B /* DetailCarViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCarViewCell.swift; sourceTree = "<group>"; };
+		97939E76276658330075574B /* DetailCarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCarPresenter.swift; sourceTree = "<group>"; };
+		97939E782766583D0075574B /* DetailCarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCarRouter.swift; sourceTree = "<group>"; };
+		97939E7A276658480075574B /* DetailCarDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCarDataHandler.swift; sourceTree = "<group>"; };
+		97939E7C276790150075574B /* DetailCarColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCarColors.swift; sourceTree = "<group>"; };
 		97DB73D62764FC1000715021 /* ListCarsDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCarsDataHandler.swift; sourceTree = "<group>"; };
 		97DB73D82765116A00715021 /* ListCarsColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCarsColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -217,6 +235,9 @@
 		9759B9762765FCD8004A4831 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				97939E70276658170075574B /* DetailCarController.swift */,
+				97939E722766581F0075574B /* DetailCarView.swift */,
+				97939E74276658270075574B /* DetailCarViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -224,6 +245,7 @@
 		9759B9772765FCE0004A4831 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				97939E6C276641720075574B /* DetailCarModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -231,6 +253,7 @@
 		9759B9782765FCF2004A4831 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				97939E76276658330075574B /* DetailCarPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -246,6 +269,7 @@
 		9759B97A2765FD00004A4831 /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				97939E782766583D0075574B /* DetailCarRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -253,6 +277,8 @@
 		9759B97B2765FD0D004A4831 /* Metrics */ = {
 			isa = PBXGroup;
 			children = (
+				97939E6E276657F60075574B /* DetailCarLayout.swift */,
+				97939E7C276790150075574B /* DetailCarColors.swift */,
 			);
 			path = Metrics;
 			sourceTree = "<group>";
@@ -260,6 +286,7 @@
 		9759B97C2765FD13004A4831 /* DataHandler */ = {
 			isa = PBXGroup;
 			children = (
+				97939E7A276658480075574B /* DetailCarDataHandler.swift */,
 			);
 			path = DataHandler;
 			sourceTree = "<group>";
@@ -346,21 +373,30 @@
 				97DB73D72764FC1000715021 /* ListCarsDataHandler.swift in Sources */,
 				973D5B1E276213F40092CB1C /* AppDelegate.swift in Sources */,
 				973D5B44276217390092CB1C /* CarBody.swift in Sources */,
+				97939E77276658330075574B /* DetailCarPresenter.swift in Sources */,
 				973D5B4A2762265A0092CB1C /* ListCarsController.swift in Sources */,
 				9759B97E2765FD55004A4831 /* DetailCarAssembly.swift in Sources */,
+				97939E75276658270075574B /* DetailCarViewCell.swift in Sources */,
 				973D5B482762211E0092CB1C /* RawCars.swift in Sources */,
 				973D5B5427625FDD0092CB1C /* ListCarPresenter.swift in Sources */,
+				97939E792766583D0075574B /* DetailCarRouter.swift in Sources */,
+				97939E6F276657F60075574B /* DetailCarLayout.swift in Sources */,
 				973D5B42276216DE0092CB1C /* Car.swift in Sources */,
 				973D5B4E276226DC0092CB1C /* ListCarsViewCell.swift in Sources */,
 				973D5B3F276215F60092CB1C /* ListCarsLayout.swift in Sources */,
 				973D5B50276227080092CB1C /* ListCarsModel.swift in Sources */,
 				973D5B4C276226850092CB1C /* ListCarsView.swift in Sources */,
 				9759B9802765FD9C004A4831 /* ListCarsRouter.swift in Sources */,
+				97939E7B276658480075574B /* DetailCarDataHandler.swift in Sources */,
+				97939E71276658170075574B /* DetailCarController.swift in Sources */,
 				973D5B5627625FEA0092CB1C /* ListCarsAssembly.swift in Sources */,
 				973D5B52276227900092CB1C /* CarModel.swift in Sources */,
 				973D5B20276213F40092CB1C /* SceneDelegate.swift in Sources */,
+				97939E6D276641720075574B /* DetailCarModel.swift in Sources */,
 				973D5B46276220120092CB1C /* Cars.swift in Sources */,
+				97939E732766581F0075574B /* DetailCarView.swift in Sources */,
 				97DB73D92765116A00715021 /* ListCarsColors.swift in Sources */,
+				97939E7D276790150075574B /* DetailCarColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

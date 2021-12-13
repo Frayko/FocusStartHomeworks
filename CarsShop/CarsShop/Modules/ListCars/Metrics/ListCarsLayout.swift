@@ -16,7 +16,7 @@ enum ListCarsLayout {
 	static let tableRowHeight: CGFloat = 43
 	static let tableViewTopAnchor: CGFloat = 12
 	
-	static let cellContentHeight: CGFloat = 5
+	static let cellContentY: CGFloat = 5
 	
 	static let cellImageViewSize: CGFloat = 16
 	static let cellImageViewCornerRadius: CGFloat = 8

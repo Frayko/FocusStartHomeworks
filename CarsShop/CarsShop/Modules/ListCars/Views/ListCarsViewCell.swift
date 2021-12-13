@@ -25,17 +25,17 @@ final class ListCarsViewCell: UITableViewCell {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		self.imageView?.frame = .init(x: ListCarsLayout.cellImageViewX,
-									  y: self.bounds.height / ListCarsLayout.cellContentHeight,
+									  y: self.bounds.height / ListCarsLayout.cellContentY,
 									  width: ListCarsLayout.cellImageViewSize,
 									  height: ListCarsLayout.cellImageViewSize)
 		
 		self.textLabel?.frame = .init(x: ListCarsLayout.cellTitleTextX,
-									  y: self.bounds.height / ListCarsLayout.cellContentHeight,
+									  y: self.bounds.height / ListCarsLayout.cellContentY,
 									  width: self.bounds.width / ListCarsLayout.cellTitleTextWidth,
 									  height: ListCarsLayout.cellTitleTextHeight)
 		
 		self.detailTextLabel?.frame = .init(x: self.bounds.width / ListCarsLayout.cellDetailTextX,
-											y: self.bounds.height / ListCarsLayout.cellContentHeight,
+											y: self.bounds.height / ListCarsLayout.cellContentY,
 											width: ListCarsLayout.cellDetailTextWidth,
 											height: ListCarsLayout.cellDetailTextHeight)
 	}
@@ -55,7 +55,7 @@ private extension ListCarsViewCell {
 	func configureUI() {
 		self.backgroundColor = .systemBackground
 	}
-	
+		
 	func configureImageView() {
 		self.imageView?.image = UIImage()
 		self.imageView?.contentMode = .scaleAspectFit

@@ -5,7 +5,7 @@
 //  Created by Александр Фомин on 12.12.2021.
 //
 
-import UIKit
+import Foundation
 
 protocol IListCarsRouter {
 	func setPushControllerHandler(_ handler: @escaping ((_ id: UUID) -> Void))
