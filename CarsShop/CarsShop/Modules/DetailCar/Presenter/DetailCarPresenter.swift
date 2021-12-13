@@ -63,9 +63,14 @@ private extension DetailCarPresenter {
 		let car = self.model.getData()
 		
 		if car.body.count > 0 {
+			self.view?.showActivityIndicator()
 			let defaultBody = car.body[0].rawValue
 			self.view?.setCarImageName(defaultBody.imageName)
-			self.view?.setPrice(car.startPrice + defaultBody.cost)
+			let randomTime = Int.random(in: 1...2)
+			DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(randomTime)) { [weak self] in
+				self?.view?.setPrice(car.startPrice + defaultBody.cost)
+				self?.view?.hideActivityIndicator()
+			}
 		}
 		self.dataHandler.setCarBody(with: car.body)
 		self.view?.reloadView()
@@ -76,12 +81,17 @@ private extension DetailCarPresenter {
 	}
 	
 	func updatePrice() {
+		self.view?.showActivityIndicator()
+		
 		let car = self.model.getData()
 		let rowSelected = self.dataHandler.getRowSelected()
-		
+	
 		guard car.body.count > rowSelected else { return }
-		
-		self.view?.setPrice(car.startPrice + car.body[rowSelected].rawValue.cost)
+		let randomTime = Int.random(in: 1...2)
+		DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(randomTime)) { [weak self] in
+			self?.view?.setPrice(car.startPrice + car.body[rowSelected].rawValue.cost)
+			self?.view?.hideActivityIndicator()
+		}
 	}
 
 	func setHandlers() {

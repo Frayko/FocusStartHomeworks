@@ -34,7 +34,7 @@ final class ListCarsViewCell: UITableViewCell {
 									  width: self.bounds.width / ListCarsLayout.cellTitleTextWidth,
 									  height: ListCarsLayout.cellTitleTextHeight)
 		
-		self.detailTextLabel?.frame = .init(x: self.bounds.width / ListCarsLayout.cellDetailTextX,
+		self.detailTextLabel?.frame = .init(x: self.bounds.width - ListCarsLayout.cellDetailTextX,
 											y: self.bounds.height / ListCarsLayout.cellContentY,
 											width: ListCarsLayout.cellDetailTextWidth,
 											height: ListCarsLayout.cellDetailTextHeight)

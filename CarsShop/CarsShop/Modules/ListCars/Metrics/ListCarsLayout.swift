@@ -26,7 +26,7 @@ enum ListCarsLayout {
 	static let cellTitleTextWidth: CGFloat = 1.38
 	static let cellTitleTextHeight: CGFloat = 17
 	
-	static let cellDetailTextX: CGFloat = 1.17
+	static let cellDetailTextX: CGFloat = 58
 	static let cellDetailTextWidth: CGFloat = 270
 	static let cellDetailTextHeight: CGFloat = 17
 }

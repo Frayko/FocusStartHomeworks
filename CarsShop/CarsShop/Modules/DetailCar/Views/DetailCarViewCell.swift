@@ -34,7 +34,7 @@ final class DetailCarViewCell: UITableViewCell {
 
 	override func layoutSubviews() {
 		super.layoutSubviews()
-		self.imageView?.frame = .init(x: self.bounds.width / DetailCarLayout.cellImageViewX,
+		self.imageView?.frame = .init(x: self.bounds.width - DetailCarLayout.cellImageViewX,
 									  y: self.bounds.height / DetailCarLayout.cellContentY,
 									  width: DetailCarLayout.cellImageViewSize,
 									  height: DetailCarLayout.cellImageViewSize)

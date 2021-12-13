@@ -25,13 +25,18 @@ enum DetailCarLayout {
 	static let cellContentY: CGFloat = 3
 	
 	static let cellImageViewSize: CGFloat = 16
-	static let cellImageViewX: CGFloat = 1.09
+	static let cellImageViewX: CGFloat = cellImageViewSize + 18
 	
 	static let cellTitleTextX: CGFloat = 15
 	static let cellTitleTextWidth: CGFloat = 1.38
 	static let cellTitleTextHeight: CGFloat = 17
 	
+	static let calculateButtonTopAnchor: CGFloat = 12
 	static let calculateButtonBottomAnchor: CGFloat = -12
 	static let calculateButtonHeight: CGFloat = 51
 	static let calculateButtonCornerRadius: CGFloat = 25
+	
+	static let activityIndicatorBackgroundViewOpacity: Float = 0.95
+	static let activityIndicatorBackgroundViewSize: CGFloat = 64
+	static let activityIndicatorBackgroundViewCornerRadius: CGFloat = 16
 }

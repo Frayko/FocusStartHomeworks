@@ -13,14 +13,18 @@ protocol IDetailCarView: UIView {
 	func setOnTouchedButtonHandler(_ handler: @escaping (() -> Void))
 	func setCarImageName(_ named: String)
 	func setPrice(_ price: Double)
+	func showActivityIndicator()
+	func hideActivityIndicator()
 	func didLoad()
 	func reloadView()
 }
 
 final class DetailCarView: UIView {
 	private var onTouchedButtonHandler: (() -> Void)?
+	private var countActivityIndicators: Int
 	
 	override init(frame: CGRect) {
+		self.countActivityIndicators = 0
 		super.init(frame: frame)
 	}
 
@@ -31,7 +35,7 @@ final class DetailCarView: UIView {
 	private lazy var carImageView: UIImageView = {
 		let imageView = UIImageView(frame: .zero)
 		imageView.translatesAutoresizingMaskIntoConstraints = false
-		imageView.contentMode = .scaleAspectFill
+		imageView.contentMode = .scaleAspectFit
 		imageView.clipsToBounds = true
 		return imageView
 	}()
@@ -47,6 +51,7 @@ final class DetailCarView: UIView {
 	
 	private lazy var priceLabel: UILabel = {
 		let label = UILabel()
+		label.text = "0.0$"
 		label.numberOfLines = 0
 		label.contentMode = .scaleAspectFit
 		label.textAlignment = .left
@@ -79,13 +84,34 @@ final class DetailCarView: UIView {
 		button.setTitle("Рассчитать цену", for: .normal)
 		button.addTarget(self, action: #selector(self.onTouched), for: .touchDown)
 		button.tintColor = .systemBackground
-		button.backgroundColor = DetailCarColors.calculateButtonColor
+		button.backgroundColor = DetailCarColors.green
 		button.layer.cornerRadius = DetailCarLayout.calculateButtonCornerRadius
 		button.layer.masksToBounds = true
 		button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.contentMode = .scaleAspectFill
 		return button
+	}()
+	
+	private lazy var activityIndicatorView: UIActivityIndicatorView = {
+		let activityIndicator = UIActivityIndicatorView()
+		activityIndicator.color = DetailCarColors.green
+		activityIndicator.hidesWhenStopped = true
+		activityIndicator.style = .large
+		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+		return activityIndicator
+	}()
+	
+	private lazy var activityIndicatorBackgroundView: UIImageView = {
+		let imageView = UIImageView(frame: .zero)
+		imageView.image = UIImage()
+		imageView.isHidden = true
+		imageView.backgroundColor = DetailCarColors.activityIndicatorBackgroundColor
+		imageView.layer.masksToBounds = true
+		imageView.layer.cornerRadius = DetailCarLayout.activityIndicatorBackgroundViewCornerRadius
+		imageView.layer.opacity = DetailCarLayout.activityIndicatorBackgroundViewOpacity
+		imageView.translatesAutoresizingMaskIntoConstraints = false
+		return imageView
 	}()
 }
 
@@ -101,6 +127,7 @@ extension DetailCarView: IDetailCarView {
 	func didLoad() {
 		self.configureUI()
 		self.configureView()
+		self.configureActivityIndicator()
 	}
 	
 	func setCarImageName(_ named: String) {
@@ -109,6 +136,20 @@ extension DetailCarView: IDetailCarView {
 	
 	func setPrice(_ price: Double) {
 		self.priceLabel.text = "\(price)$"
+	}
+	
+	func showActivityIndicator() {
+		self.activityIndicatorBackgroundView.isHidden = false
+		self.activityIndicatorView.startAnimating()
+		self.countActivityIndicators += 1
+	}
+	
+	func hideActivityIndicator() {
+		self.countActivityIndicators -= 1
+		if self.countActivityIndicators == 0 {
+			self.activityIndicatorBackgroundView.isHidden = true
+			self.activityIndicatorView.stopAnimating()
+		}
 	}
 	
 	func setOnTouchedButtonHandler(_ handler: @escaping (() -> Void)) {
@@ -184,7 +225,8 @@ private extension DetailCarView {
 		])
 		
 		NSLayoutConstraint.activate([
-			self.calculatePriceButton.topAnchor.constraint(equalTo: self.tableView.bottomAnchor),
+			self.calculatePriceButton.topAnchor.constraint(equalTo: self.tableView.bottomAnchor,
+														   constant: DetailCarLayout.calculateButtonTopAnchor),
 			self.calculatePriceButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor,
 															   constant: DetailCarLayout.leadingAnchor),
 			self.calculatePriceButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor,
@@ -192,6 +234,23 @@ private extension DetailCarView {
 			self.calculatePriceButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor,
 															  constant: DetailCarLayout.calculateButtonBottomAnchor),
 			self.calculatePriceButton.heightAnchor.constraint(equalToConstant: DetailCarLayout.calculateButtonHeight)
+		])
+	}
+	
+	func configureActivityIndicator() {
+		self.addSubview(self.activityIndicatorBackgroundView)
+		self.addSubview(self.activityIndicatorView)
+		
+		NSLayoutConstraint.activate([
+			self.activityIndicatorBackgroundView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			self.activityIndicatorBackgroundView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+			self.activityIndicatorBackgroundView.widthAnchor.constraint(equalToConstant: DetailCarLayout.activityIndicatorBackgroundViewSize),
+			self.activityIndicatorBackgroundView.heightAnchor.constraint(equalToConstant: DetailCarLayout.activityIndicatorBackgroundViewSize)
+		])
+		
+		NSLayoutConstraint.activate([
+			self.activityIndicatorView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			self.activityIndicatorView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
 		])
 	}
 }
