@@ -7,7 +7,8 @@
 
 import Foundation
 
-final class Cars {
+final class Cars
+{
 	static let shared = Cars()
 	private let cars: [Car]
 	
@@ -20,7 +21,8 @@ final class Cars {
 	}
 }
 
-extension Cars {
+extension Cars
+{
 	func getCars() -> [Car] {
 		self.cars
 	}

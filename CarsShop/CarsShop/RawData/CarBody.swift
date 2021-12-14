@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum CarBody {
+enum CarBody
+{
 	case sedan(String, Double)
 	case coupe(String, Double)
 	case universal(String, Double)

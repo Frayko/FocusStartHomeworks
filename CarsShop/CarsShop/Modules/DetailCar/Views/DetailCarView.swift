@@ -7,7 +7,8 @@
 
 import UIKit
 
-protocol IDetailCarView: UIView {
+protocol IDetailCarView: UIView
+{
 	func setTableViewDelegate(delegate: IDetailCarDataHandler)
 	func setTableViewDataSource(dataSource: IDetailCarDataHandler)
 	func setOnTouchedButtonHandler(_ handler: @escaping (() -> Void))
@@ -19,7 +20,8 @@ protocol IDetailCarView: UIView {
 	func reloadView()
 }
 
-final class DetailCarView: UIView {
+final class DetailCarView: UIView
+{
 	private var onTouchedButtonHandler: (() -> Void)?
 	private var countActivityIndicators: Int
 	
@@ -115,7 +117,8 @@ final class DetailCarView: UIView {
 	}()
 }
 
-extension DetailCarView: IDetailCarView {
+extension DetailCarView: IDetailCarView
+{
 	func setTableViewDelegate(delegate: IDetailCarDataHandler) {
 		self.tableView.delegate = delegate
 	}
@@ -161,8 +164,10 @@ extension DetailCarView: IDetailCarView {
 	}
 }
 
-private extension DetailCarView {
-	@objc private func onTouched() {
+private extension DetailCarView
+{
+	@objc
+	func onTouched() {
 		self.onTouchedButtonHandler?()
 	}
 	

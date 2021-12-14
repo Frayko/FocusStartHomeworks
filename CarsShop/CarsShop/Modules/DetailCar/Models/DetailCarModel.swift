@@ -7,17 +7,20 @@
 
 import UIKit
 
-protocol IDetailCarModel: AnyObject {
+protocol IDetailCarModel: AnyObject
+{
 	func loadData(carId: UUID)
 	func setData(car data: Car)
 	func getData() -> Car
 }
 
-final class DetailCarModel {
+final class DetailCarModel
+{
 	private var data: Car?
 }
 
-extension DetailCarModel: IDetailCarModel {
+extension DetailCarModel: IDetailCarModel
+{
 	func loadData(carId: UUID) {
 		let carInstance = Cars.shared
 		guard let rawCar = carInstance.getCar(id: carId) else { return }

@@ -7,14 +7,16 @@
 
 import UIKit
 
-protocol IListCarsView: UIView {
+protocol IListCarsView: UIView
+{
 	func setTableViewDelegate(delegate: IListCarsDataHandler)
 	func setTableViewDataSource(dataSource: IListCarsDataHandler)
 	func didLoad()
 	func reloadView()
 }
 
-final class ListCarsView: UIView {
+final class ListCarsView: UIView
+{
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 	}
@@ -42,7 +44,8 @@ final class ListCarsView: UIView {
 	}()
 }
 
-extension ListCarsView: IListCarsView {
+extension ListCarsView: IListCarsView
+{
 	func setTableViewDelegate(delegate: IListCarsDataHandler) {
 		self.tableView.delegate = delegate
 	}
@@ -61,7 +64,8 @@ extension ListCarsView: IListCarsView {
 	}
 }
 
-private extension ListCarsView {
+private extension ListCarsView
+{
 	func configureUI() {
 		self.backgroundColor = .systemBackground
 	}

@@ -7,7 +7,8 @@
 
 import UIKit
 
-enum DetailCarAssembly {
+enum DetailCarAssembly
+{
 	static func build(id: UUID) -> UIViewController {
 		let router = DetailCarRouter()
 		let model = DetailCarModel()

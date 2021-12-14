@@ -7,7 +7,8 @@
 
 import UIKit
 
-final class AppNavigationController: UINavigationController {
+final class AppNavigationController: UINavigationController
+{
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		configureNavigationController()
@@ -15,7 +16,8 @@ final class AppNavigationController: UINavigationController {
 	}
 }
 
-private extension AppNavigationController {
+private extension AppNavigationController
+{
 	func configureNavigationController() {
 		let attrs = [
 			NSAttributedString.Key.font: UIFont.systemFont(ofSize: 28, weight: .semibold)

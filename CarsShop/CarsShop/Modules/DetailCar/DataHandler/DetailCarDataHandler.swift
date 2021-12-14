@@ -7,19 +7,22 @@
 
 import UIKit
 
-protocol IDetailCarDataHandler: UITableViewDelegate, UITableViewDataSource {
+protocol IDetailCarDataHandler: UITableViewDelegate, UITableViewDataSource
+{
 	func setCarBody(with carBody: [CarBody])
 	func setOnTouchedButtonHandler(_ handler: @escaping ((_ carBodyImageName: String) -> Void))
 	func getRowSelected() -> Int
 }
 
-final class DetailCarDataHandler: NSObject {
+final class DetailCarDataHandler: NSObject
+{
 	private var carBody: [CarBody]?
 	private var onTouchedButtonHandler: ((_ carBodyImageName: String) -> Void)?
 	private var rowSelected = 0
 }
 
-extension DetailCarDataHandler: IDetailCarDataHandler {
+extension DetailCarDataHandler: IDetailCarDataHandler
+{
 	func setCarBody(with carBody: [CarBody]) {
 		self.carBody = carBody
 	}
@@ -33,7 +36,8 @@ extension DetailCarDataHandler: IDetailCarDataHandler {
 	}
 }
 
-extension DetailCarDataHandler: UITableViewDelegate {
+extension DetailCarDataHandler: UITableViewDelegate
+{
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		guard let carBody = self.carBody?[indexPath.item] else {
 			return
@@ -45,7 +49,8 @@ extension DetailCarDataHandler: UITableViewDelegate {
 	}
 }
 
-extension DetailCarDataHandler: UITableViewDataSource {
+extension DetailCarDataHandler: UITableViewDataSource
+{
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		self.carBody?.count ?? 0
 	}

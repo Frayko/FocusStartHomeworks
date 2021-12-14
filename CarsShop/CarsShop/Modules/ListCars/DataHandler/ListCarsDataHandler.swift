@@ -7,19 +7,22 @@
 
 import UIKit
 
-protocol IListCarsDataHandler: UITableViewDelegate, UITableViewDataSource {
+protocol IListCarsDataHandler: UITableViewDelegate, UITableViewDataSource
+{
 	func setModel(_ model: IListCarsModel)
 	func setCars(with cars: [Car])
 	func setOnTouchedButtonHandler(_ handler: @escaping ((_ id: UUID) -> Void))
 }
 
-final class ListCarsDataHandler: NSObject {
+final class ListCarsDataHandler: NSObject
+{
 	private var cars: [Car]?
 	private weak var model: IListCarsModel?
 	private var onTouchedButtonHandler: ((_ id: UUID) -> Void)?
 }
 
-extension ListCarsDataHandler: IListCarsDataHandler {
+extension ListCarsDataHandler: IListCarsDataHandler
+{
 	func setModel(_ model: IListCarsModel) {
 		self.model = model
 	}
@@ -33,7 +36,8 @@ extension ListCarsDataHandler: IListCarsDataHandler {
 	}
 }
 
-extension ListCarsDataHandler: UITableViewDelegate {
+extension ListCarsDataHandler: UITableViewDelegate
+{
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
 		
@@ -45,7 +49,8 @@ extension ListCarsDataHandler: UITableViewDelegate {
 	}
 }
 
-extension ListCarsDataHandler: UITableViewDataSource {
+extension ListCarsDataHandler: UITableViewDataSource
+{
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		self.cars?.count ?? 0
 	}

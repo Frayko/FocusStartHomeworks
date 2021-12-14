@@ -5,7 +5,8 @@
 //  Created by Александр Фомин on 09.12.2021.
 //
 
-enum RawCars {
+enum RawCars
+{
 	static let bmw = Car(name: "BMW",
 						 startPrice: 10000,
 						 body: [

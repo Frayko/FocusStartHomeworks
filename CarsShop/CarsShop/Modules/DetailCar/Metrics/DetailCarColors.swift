@@ -7,7 +7,8 @@
 
 import UIKit
 
-enum DetailCarColors {
+enum DetailCarColors
+{
 	static let green = UIColor(red: 93.0 / 255.0,
 							   green: 176.0 / 255.0,
 							   blue: 117.0 / 255.0,

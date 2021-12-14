@@ -7,11 +7,13 @@
 
 import UIKit
 
-protocol IDetailCarPresenter {
+protocol IDetailCarPresenter
+{
 	func loadView(controller: IDetailCarVC, view: IDetailCarView)
 }
 
-final class DetailCarPresenter {
+final class DetailCarPresenter
+{
 	private let model: IDetailCarModel
 	private let router: IDetailCarRouter
 	private let dataHandler: IDetailCarDataHandler
@@ -38,7 +40,8 @@ final class DetailCarPresenter {
 	}()
 }
 
-extension DetailCarPresenter: IDetailCarPresenter {
+extension DetailCarPresenter: IDetailCarPresenter
+{
 	func loadView(controller: IDetailCarVC, view: IDetailCarView) {
 		self.controller = controller
 		self.controller?.navigationItem.leftBarButtonItem = returnButton
@@ -54,8 +57,10 @@ extension DetailCarPresenter: IDetailCarPresenter {
 	}
 }
 
-private extension DetailCarPresenter {
-	@objc func close() {
+private extension DetailCarPresenter
+{
+	@objc
+	func close() {
 		self.controller?.goToListCars()
 	}
 	

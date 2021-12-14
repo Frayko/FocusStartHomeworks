@@ -7,7 +7,8 @@
 
 import UIKit
 
-final class DetailCarViewCell: UITableViewCell {
+final class DetailCarViewCell: UITableViewCell
+{
 	static let identifier = "DetailCarViewCell"
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -46,13 +47,15 @@ final class DetailCarViewCell: UITableViewCell {
 	}
 }
 
-extension DetailCarViewCell {
+extension DetailCarViewCell
+{
 	func setData(with data: CarBody) {
 		self.textLabel?.text = data.rawValue.name
 	}
 }
 
-private extension DetailCarViewCell {
+private extension DetailCarViewCell
+{
 	func configureUI() {
 		self.backgroundColor = .systemBackground
 	}

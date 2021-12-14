@@ -7,7 +7,8 @@
 
 import UIKit
 
-enum ListCarsAssembly {
+enum ListCarsAssembly
+{
 	static func build() -> UIViewController {
 		let router = ListCarsRouter()
 		let model = ListCarsModel()

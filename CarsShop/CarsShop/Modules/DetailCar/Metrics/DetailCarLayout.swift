@@ -7,7 +7,8 @@
 
 import UIKit
 
-enum DetailCarLayout {
+enum DetailCarLayout
+{
 	static let leadingAnchor: CGFloat = 16
 	static let trailingAnchor: CGFloat = -leadingAnchor
 	

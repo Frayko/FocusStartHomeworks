@@ -7,7 +7,8 @@
 
 import UIKit
 
-final class ListCarsViewCell: UITableViewCell {
+final class ListCarsViewCell: UITableViewCell
+{
 	static let identifier = "ListCarsTableViewCell"
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -41,7 +42,8 @@ final class ListCarsViewCell: UITableViewCell {
 	}
 }
 
-extension ListCarsViewCell {
+extension ListCarsViewCell
+{
 	func setData(car data: CarModel) {
 		self.textLabel?.text = data.name
 	}
@@ -51,7 +53,8 @@ extension ListCarsViewCell {
 	}
 }
 
-private extension ListCarsViewCell {
+private extension ListCarsViewCell
+{
 	func configureUI() {
 		self.backgroundColor = .systemBackground
 	}

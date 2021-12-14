@@ -7,11 +7,13 @@
 
 import UIKit
 
-protocol IListCarsPresenter {
+protocol IListCarsPresenter
+{
 	func loadView(controller: IListCarsVC, view: IListCarsView)
 }
 
-final class ListCarsPresenter {
+final class ListCarsPresenter
+{
 	private let model: IListCarsModel
 	private let router: IListCarsRouter
 	private let dataHandler: IListCarsDataHandler
@@ -33,7 +35,8 @@ final class ListCarsPresenter {
 	}
 }
 
-extension ListCarsPresenter: IListCarsPresenter {
+extension ListCarsPresenter: IListCarsPresenter
+{
 	func loadView(controller: IListCarsVC, view: IListCarsView) {
 		self.controller = controller
 		self.view = view
@@ -46,7 +49,8 @@ extension ListCarsPresenter: IListCarsPresenter {
 	}
 }
 
-private extension ListCarsPresenter {
+private extension ListCarsPresenter
+{
 	func setData() {
 		self.dataHandler.setModel(self.model)
 		self.dataHandler.setCars(with: carsInstance.getCars())

@@ -7,17 +7,20 @@
 
 import UIKit
 
-protocol IListCarsModel: AnyObject {
+protocol IListCarsModel: AnyObject
+{
 	func setData(car data: CarModel)
 	func setData(car data: Car)
 	func getData() -> CarModel
 }
 
-final class ListCarsModel {
+final class ListCarsModel
+{
 	private var data: CarModel?
 }
 
-extension ListCarsModel: IListCarsModel {
+extension ListCarsModel: IListCarsModel
+{
 	func setData(car data: CarModel) {
 		self.data = data
 	}

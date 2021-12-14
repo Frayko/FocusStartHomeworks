@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct CarModel {
+struct CarModel
+{
 	let id: UUID
 	let name: String
 }

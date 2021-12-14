@@ -7,16 +7,19 @@
 
 import Foundation
 
-protocol IDetailCarRouter {
+protocol IDetailCarRouter
+{
 	func setGoToListCarsHandler(_ handler: @escaping (() -> Void))
 	func goToListCars()
 }
 
-final class DetailCarRouter {
+final class DetailCarRouter
+{
 	private var goToListCarsHandler: (() -> Void)?
 }
 
-extension DetailCarRouter: IDetailCarRouter {
+extension DetailCarRouter: IDetailCarRouter
+{
 	func setGoToListCarsHandler(_ handler: @escaping (() -> Void)) {
 		self.goToListCarsHandler = handler
 	}

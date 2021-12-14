@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Car {
+struct Car
+{
 	let id = UUID()
 	let name: String
 	let startPrice: Double

@@ -7,11 +7,13 @@
 
 import UIKit
 
-protocol IDetailCarVC: UIViewController {
+protocol IDetailCarVC: UIViewController
+{
 	func goToListCars()
 }
 
-final class DetailCarVC: UIViewController {
+final class DetailCarVC: UIViewController
+{
 	private let rootView: IDetailCarView
 	private let presenter: IDetailCarPresenter
 	
@@ -35,7 +37,8 @@ final class DetailCarVC: UIViewController {
 	}
 }
 
-extension DetailCarVC: IDetailCarVC {
+extension DetailCarVC: IDetailCarVC
+{
 	func goToListCars() {
 		self.navigationController?.popToRootViewController(animated: true)
 	}

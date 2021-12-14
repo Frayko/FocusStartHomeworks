@@ -7,16 +7,19 @@
 
 import Foundation
 
-protocol IListCarsRouter {
+protocol IListCarsRouter
+{
 	func setPushControllerHandler(_ handler: @escaping ((_ id: UUID) -> Void))
 	func goToDetailCar(id: UUID)
 }
 
-final class ListCarsRouter {
+final class ListCarsRouter
+{
 	private var goToDetailCarHandler: ((_ id: UUID) -> Void)?
 }
 
-extension ListCarsRouter: IListCarsRouter {
+extension ListCarsRouter: IListCarsRouter
+{
 	func setPushControllerHandler(_ handler: @escaping ((UUID) -> Void)) {
 		self.goToDetailCarHandler = handler
 	}

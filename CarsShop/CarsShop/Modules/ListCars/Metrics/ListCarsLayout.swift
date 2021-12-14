@@ -7,7 +7,8 @@
 
 import UIKit
 
-enum ListCarsLayout {
+enum ListCarsLayout
+{
 	static let scrollViewTopAnchor: CGFloat = 40.0
 	static let scrollViewLeadingAnchor: CGFloat = 18.0
 	static let scrollViewTrailingAnchor: CGFloat = -scrollViewLeadingAnchor
