@@ -5,8 +5,6 @@
 //  Created by Александр Фомин on 15.12.2021.
 //
 
-import Foundation
-
 protocol ILoadImagesRouter
 {
 	func setGoToShowAlertMessageHandler(_ handler: @escaping ((_ title: String, _ message: String) -> Void))
