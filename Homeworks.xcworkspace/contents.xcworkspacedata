@@ -2,7 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:LoadImagesApp/LoadImagesApp.xcodeproj">
+	  location = "group:LoadImagesApp/LoadImagesApp.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CarsShop/CarsShop.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:CollectionAppWithArchitectures/CollectionAppWithArchitectures.xcodeproj">
